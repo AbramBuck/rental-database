@@ -410,20 +410,45 @@ router.delete('/:spotId',requireAuth,handleValidationErrors, async (req, res, ne
     }
 
     try {
-      const {review, stars} = req.body;
+      const { review, stars } = req.body;
   
-      if (!review || !stars ) {
-        return res.status(400).json({message: 'Bad Request'});
+ 
+      if (!review) {
+        return res.status(400).json({ message: 'Bad Request', errors: { review: 'Review text is required' } });
       }
-      const newReview = await Review.create({ spotId, userId:loggedInUserId, review, stars});
-        res.status(201).json(newReview);
+      if (typeof stars !== 'number' || stars < 1 || stars > 5) {
+        return res.status(400).json({ message: 'Bad Request', errors: { stars: 'Stars must be an integer from 1 to 5' } });
+      }
+     
+     
+      const existingReview = await Review.findOne({
+        where: {
+          spotId,
+          userId: loggedInUserId
+        }
+      });
+      
+      if (existingReview) {
+     
+        return res.status(400).json({ message: 'User already has a review for this spot' });
+      }
+
+      const newReview = await Review.create({ spotId, userId: loggedInUserId, review, stars });
+      
+      return res.status(201).json({
+        id: newReview.id,
+        spotId: newReview.spotId,
+        userId: newReview.userId,
+        review: newReview.review,
+        stars: newReview.stars,
+        createdAt: newReview.createdAt,
+        updatedAt: newReview.updatedAt,
+      });
   
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error:'Internal Server Error' });
+      return res.status(500).json({ message: 'Internal Server Error' });
     }
-
-  
   });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////GET REVIEWS BY SPOT ID ////////////////////////////////////////////////////////////////////////////////////////////////
