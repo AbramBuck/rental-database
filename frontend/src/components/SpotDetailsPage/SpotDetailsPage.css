@@ -1,0 +1,79 @@
+.pageWrapper {
+    width: 100%;
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+}
+/* Top Text Area */
+.topTextArea {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: center;
+    width: 1000px;
+    gap: 10px;
+    background-color: blanchedalmond;
+
+}
+
+.titleText {
+    align-self: top;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    margin: 0px
+}
+
+.text {
+    align-self: top;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    margin: 0px
+}
+
+/* Image Area */
+
+.imageArea {
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    align-self: center;
+}
+
+.heroImageArea {
+    width: 600px;
+    background-color: azure;
+    padding-right: 10px;
+    
+}
+
+.heroImage {
+    width: 600px;
+    border-radius: 10px;
+}
+
+.sideImagesArea {
+    width: 390px;
+    background-color: azure;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.sideImage {
+    width: 120px;
+    height: 165px;
+    flex-basis: calc(50% - 10px);
+    border-radius: 10px;
+}
+
+/* Details Area */
+
+
+
+
+
+
+
+
+
