@@ -8,7 +8,7 @@ function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
   
     return (
-        <div className={styles.topnav}>
+        <div className='topnav'>
                 <div>
                 <NavLink to="/">Home</NavLink>
                 </div>
