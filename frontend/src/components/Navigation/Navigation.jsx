@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from '../Navigation/ProfileButton';
-import 'postgresql://rental_database/frontend/src/components/Navigation/Navigation.css';
+import 'rental_database/frontend/src/components/Navigation/Navigation.css';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
