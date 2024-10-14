@@ -32,7 +32,7 @@ function LoginFormModal() {
           <label>
             Username or Email
             <input
-              className="loginmodal-container input"f
+              className="loginmodal-container input"
               type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
