@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
 import heroImage from '../../images/Stormwind_1.jpg';
 import image2 from '../../images/Stormwind_2_tradedistrict.jpg'
-import styles from './SpotDetailsPage.css';
+import './SpotStylesPage.css';
+import dummyText from '../LayoutElements/DummyText';
 
 function SpotDetailsPage() {
 
@@ -22,7 +22,10 @@ function SpotDetailsPage() {
                     <img src={image2} alt="Stormwind" className='sideImage'/>
                 </div>
             </div>
-            <div></div>
+            <div className='detailsArea'>
+                <div className='title'>Hosted by FirstName LastName</div>
+                <div className='arsenal-sc-regular'>{dummyText}</div>
+            </div>
             <div></div>
             <div></div>
         </div>

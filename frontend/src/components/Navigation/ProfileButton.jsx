@@ -7,6 +7,7 @@ import LoginFormModal from '../LoginFormModal/LoginFormModal';
 import SignupFormModal from '../SignupFormModal/SignupFormModal';
 //import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import './ProfileButton.css';
+import icon from '../../images/Hearth-Havens_Icon.png'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -44,8 +45,9 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button className='buttonIcon' onClick={toggleMenu}>
-        <FaUserCircle />
+      <button className='buttonIconArea' onClick={toggleMenu}>
+        <img className='buttonIcon' src={icon} alt="Hearths & Havens" />
+        {/* <FaUserCircle /> */}
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
