@@ -2,7 +2,10 @@ import bgImage from '../../images/Hearths-Havens-bg-no-text.png'
 import logo from '../../images/Hearth-Havens_TextLogo.png'
 import '../SpotDetailsPage/SpotStylesPage.css';
 
+
 function HomePage(){
+
+
 return (
     <>
     <div className='pageWrapper'>
@@ -13,6 +16,7 @@ return (
             {/* get all spots wrapper */}
             <div>
                 {/* this div will generate a div for each spot */}
+
             </div>
         </div>
     </div>

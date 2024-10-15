@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { FaUserCircle } from 'react-icons/fa';
 import * as sessionActions from '../../store/session';
 import OpenModalButton from '../OpenModalButton/OpenModalButton';
 import LoginFormModal from '../LoginFormModal/LoginFormModal';
 import SignupFormModal from '../SignupFormModal/SignupFormModal';
-//import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import './ProfileButton.css';
 import icon from '../../images/Hearth-Havens_Icon.png'
 
