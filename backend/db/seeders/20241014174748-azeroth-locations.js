@@ -191,7 +191,7 @@ module.exports = {
     options.tableName = 'Spots';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      address: { [Op.in]: ["100 Stormwind Keep Rd", "2500 Orgrimmar Blvd", "17 Kirin Tor Way", "999 Darkshire Ln", "420 Naxxramas Cir", "101 Sentinel Hill Ln", "400 Dreamwalk Rd", "300 Zaralek Cave Rd", "777 Amirdrassil Way", "800 Hallowfall Ln", "222 Khaz Algar Ave", "600 Suramar Ln", "1000 Silvermoon Cir", "33 Lakeshire Rd"   ] }
+      address: { [Op.in]: ["100 Stormwind Keep Rd", "2500 Orgrimmar Blvd", "17 Kirin Tor Way", "999 Darkshire Ln", "420 Naxxramas Cir", "101 Sentinel Hill Ln", "400 Dreamwalk Rd", "300 Zaralek Cave Rd", "777 Amirdrassil Way", "800 Hallowfall Ln", "222 Khaz Algar Ave", "600 Suramar Ln", "1000 Silvermoon Cir", "33 Lakeshire Rd"] }
     }, {});
   }
 };
