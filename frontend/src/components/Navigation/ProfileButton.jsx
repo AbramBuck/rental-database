@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import OpenModalButton from '../OpenModalButton/OpenModalButton';
@@ -11,6 +12,7 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const navigate = useNavigate();
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -37,24 +39,26 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
     closeMenu();
+    navigate('/');
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
     <>
-      <button className='buttonIconArea' onClick={toggleMenu}>
-        <img className='buttonIcon' src={icon} alt="Hearths & Havens" />
-        {/* <FaUserCircle /> */}
+      <img className='buttonIcon' src={icon} alt="Hearths & Havens" />
+      <button onClick={toggleMenu} className='profileButton'>
+        {!user ? "Login or Signup" : user.username}
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
           <div className='buttonBG'>
-            <div>{user.username}</div>
-            <div>{user.firstName} {user.lastName}</div>
-            <div>{user.email}</div>
-            <div><button className='logoutBtn' onClick={logout}>Log Out</button></div>
+            {user ? <h1>Hello {user.firstName}!</h1> : _}
+            <div><p></p>Username: {user.username}</div>
+            <div>Name: {user.firstName} {user.lastName}</div>
+            <div>Email: {user.email}</div>
+            <div><button onClick={logout}>Log Out</button></div>
           </div>
           </>
         ) : (

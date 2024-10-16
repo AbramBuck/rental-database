@@ -1,6 +1,6 @@
 import heroImage from '../../images/Stormwind_1.jpg';
 import image2 from '../../images/Stormwind_2_tradedistrict.jpg'
-import './SpotStylesPage.css';
+import '../SpotDetailsPage/SpotStylesPage.css';
 import dummyText from '../LayoutElements/DummyText';
 
 function SpotDetailsPage() {

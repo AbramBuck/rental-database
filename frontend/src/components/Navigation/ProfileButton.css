@@ -1,7 +1,7 @@
 .buttonBG {
     position: absolute;
-    right: 15px;
-    top: 100px;
+    right: 8px;
+    top:60px;
     padding: 30px;
     max-width: 350px;
     width: 100% !important;
@@ -12,30 +12,32 @@
     overflow: hidden;
     font-family: roboto;
     line-height: 25px;
+    z-index: 1;
 }
 
-.logoutBtn {
-    border: 0px;
-    color: #fff;
-    text-shadow: 0 1px rgba(0,0,0,0.1); 
-    background-color: #4d90fe;
-    padding: 17px 0px;
-    font-family: roboto;
-    font-size: 14px;
-    width: 100px;
-    margin-top: 15px;
+.profileButton {
+    width: fit-content;
+    padding-top: 8px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    margin-right: 50px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
-.buttonIconArea {
-    margin-right: 5px;
-    width: 50px;
-    height: 50px;
-    background-color: rgb(7, 6, 2);
+.profileButton:hover {
+    width: fit-content;
+    padding-top: 8px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    margin-right: 50px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .buttonIcon {
+    padding-top: 5px;
     width: 30px;
-    height: 30px;
-    padding: 5px 20px 5px 5px;
-    margin-right: 15px;
+    height: 40px;
 }
+

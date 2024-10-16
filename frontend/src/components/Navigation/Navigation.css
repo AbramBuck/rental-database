@@ -4,19 +4,22 @@
 
   .profileBtn {
     display: flex;
-    position: absolute;
-    right: 0;
-    flex-direction: row-reverse;
+    justify-items: center;
+    flex-direction: row;
+    gap:20px;
+    float: right;
     height: 50px;
-    width: 300px;
+    margin-right: 15px;
   }
 
   .topnav {
-    overflow: hidden;
-    background-color: #333;
+    height: 50px;
+    background-color: rgb(51, 51, 51);
   }
   
   .topnav a {
+    display: flex;
+    flex-direction: row;
     float: left;
     color: #f2f2f2;
     text-align: center;
@@ -31,5 +34,5 @@
   }
   
   .topnav a.active {
-    background-color: #04AA6D;
     color: white;
+  }

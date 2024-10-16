@@ -6,8 +6,8 @@ import '../../../src/components/LoginFormModal/LoginForm.css';
 
 function LoginFormModal() {
   const dispatch = useDispatch();
-  const [credential, setCredential] = useState("");
-  const [password, setPassword] = useState("");
+  let [credential, setCredential] = useState("");
+  let [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
@@ -24,12 +24,27 @@ function LoginFormModal() {
       });
   };
 
+  const handleDemoUserSubmit = (e) => {
+    console.log("The Boy King Logged In");
+    e.preventDefault();
+    setErrors({});
+    // Correct way to pass credentials as an object
+    return dispatch(sessionActions.login({ credential: "TheBoyKing", password: "password4" }))
+      .then(closeModal)
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
+  };
+
   return (
     <>
     <div className="loginmodal-container">
-        <h1 className="h1">Log In</h1>
+        <h1>Log In</h1>
         <form onSubmit={handleSubmit}>
-          <label>
+          <label className='label'>
             Username or Email
             <input
               className="loginmodal-container input"
@@ -39,7 +54,7 @@ function LoginFormModal() {
               required
             />
           </label>
-          <label>
+          <label className='label'>
             Password
             <input
               className="loginmodal-container input"
@@ -52,7 +67,10 @@ function LoginFormModal() {
           {errors.credential && (
             <p>{errors.credential}</p>
           )}
-          <button className="button" type="submit">Log In</button>
+          <div className='loginButtonArea'>
+          <button type="submit">Log In</button>
+          <button type="button" onClick={handleDemoUserSubmit}>Log In as Demo User</button>
+          </div>
         </form>
       </div>
     </>

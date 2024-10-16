@@ -1,7 +1,7 @@
 import {useState, useEffect } from 'react';
 import { csrfFetch } from '../../store/csrf';
-import bgImage from '../../images/Hearths-Havens-bg-no-text.png'
-import logo from '../../images/Hearth-Havens_TextLogo.png'
+import bgImage from '../../images/Hearths-Havens-bg-no-text.png';
+import logo from '../../images/Hearth-Havens_TextLogo.png';
 import '../SpotDetailsPage/SpotStylesPage.css';
 
 
