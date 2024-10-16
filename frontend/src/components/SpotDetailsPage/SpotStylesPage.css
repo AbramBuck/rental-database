@@ -72,15 +72,7 @@
     border-radius: 10px;
 }
 
-/* Details Area */
 
-.detailsArea {
-    display: flex;
-    flex-direction: column;
-    width: 1000px;
-    align-self: center;
-    background-color: aqua;
-}
 
 .title {
     font-family: "Rakkas", serif;
@@ -189,4 +181,41 @@
   .btnStyle {
     border: 2px outset grey ;
     background-color: #801817;
+  }
+/* SPOT DETAILS PAGE */
+  /* DETAILS & REVIEW WRAPPER */
+
+  .detailsReserveWrapper {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    gap: 10px;
+    width: 1000px;
+    padding-top: 15px;
+  }
+
+  /* Details Area */
+
+.detailsArea {
+    width: 60%;
+
+    background-color: aqua;
+}
+
+  /* REVIEW AREA */
+
+  .reserveArea {
+    width: 40%;
+    background-color: pink;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgb(62, 45, 14);
+  }
+
+  .priceReviewArea {
+    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+
   }

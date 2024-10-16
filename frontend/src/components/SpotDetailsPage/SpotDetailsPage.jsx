@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSpotDetails } from '../../store/spotActions';
+import { FaStar } from "react-icons/fa6";
 import image2 from '../../images/Stormwind_2_tradedistrict.jpg'
 import '../SpotDetailsPage/SpotStylesPage.css';
 
@@ -27,6 +28,9 @@ function SpotDetailsPage() {
         </div>
 
     const previewImage = spot.SpotImages?.find((image) => image.preview)?.url || spot.SpotImages[0].url;
+    const alertMsg = () => {
+        alert('Feature Coming Soon!');
+    };
 
     return (
         <>
@@ -44,12 +48,18 @@ function SpotDetailsPage() {
                     <img src={image2} alt="Stormwind" className='sideImage'/>
                 </div>
             </div>
-            <div className='detailsArea'>
-                <div className='title'>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</div>
-                <div className='arsenal-sc-regular'>{spot.description}</div>
+            <div className='detailsReserveWrapper'>
+                <div className='detailsArea'>
+                    <div className='title'>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</div>
+                    <div className='arsenal-sc-regular'>{spot.description}</div>
+                </div>
+                <div className='reserveArea'>
+                    <div className='priceReviewArea'>
+                           <div>{spot.price} night</div> <div><FaStar /> #.#</div> <div># reviews</div>
+                    </div>
+                    <button onClick={alertMsg}>Reserve</button>
+                </div>
             </div>
-            <div></div>
-            <div></div>
         </div>
         </>
     )
