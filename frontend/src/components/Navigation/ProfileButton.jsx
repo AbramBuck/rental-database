@@ -54,7 +54,7 @@ function ProfileButton({ user }) {
         {user ? (
           <>
           <div className='buttonBG'>
-            {user ? <h1>Hello {user.firstName}!</h1> : _}
+            {user ? <h1>Hello {user.firstName}!</h1> : ""}
             <div><p></p>Username: {user.username}</div>
             <div>Name: {user.firstName} {user.lastName}</div>
             <div>Email: {user.email}</div>
