@@ -53,6 +53,12 @@ h1 {
     font-size: 45px;
 }
 
+h2 {
+  font-family: "Rakkas", serif;
+  font-weight: 100;
+  font-size: 25px;
+}
+
 label {
     font-family: "Arsenal SC", sans-serif;
     font-weight: 700;

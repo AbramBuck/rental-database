@@ -13,6 +13,10 @@
     align-self: center;
     width: 1000px;
     gap: 10px;
+    border-radius: 10px;
+    padding: 20px 0px 20px 25px;
+    margin: 15px 0px 15px 0px;
+    box-shadow: 5px 5px 3px rgb(134, 123, 83);
     background-color: blanchedalmond;
 
 }
@@ -74,7 +78,7 @@
 
 
 
-.title {
+.hostedByText {
     font-family: "Rakkas", serif;
     font-weight: 400;
     font-size: 25px;
@@ -198,11 +202,9 @@
 
 .detailsArea {
     width: 60%;
-
-    background-color: aqua;
 }
 
-  /* REVIEW AREA */
+  /* DETAILS/RESERVE AREA */
 
   .reserveArea {
     width: 40%;
@@ -213,9 +215,58 @@
   }
 
   .priceReviewArea {
-    background-color: blue;
     display: flex;
     flex-direction: row;
-    gap:20px;
+    align-items: center;
+    gap:10px;
+    padding: 15px 5px 0px 20px !important;
+
+  }
+
+  .spotPrice {
+    font-family: "Rakkas", serif;
+    font-size: 25px;
+  }
+
+  .buttonDiv {
+    width: fit-content;
+    padding: 0px 20px 25px 20px;
+  }
+
+  /* REVIEW AREA */
+  .reviewArea {
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 1000px;
+  }
+
+  .reviewHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 5px 5px 10px 10px;
+  }
+
+  .divider {
+    width: 995px;
+    height: 0px;
+    border-color: rgb(59, 54, 7);
+    border-style: solid;
+    display: flex;
+    align-self: center;
+    border-radius: 4px;
+  }
+
+  /* REVIEW ENTRIES */
+  .reviewEntryArea {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 20px;
+    width: 1000px;
+    padding: 25px 0px 20px 75px;
 
   }

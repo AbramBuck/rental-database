@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSpotDetails } from '../../store/spotActions';
 import { FaStar } from "react-icons/fa6";
@@ -50,15 +50,30 @@ function SpotDetailsPage() {
             </div>
             <div className='detailsReserveWrapper'>
                 <div className='detailsArea'>
-                    <div className='title'>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</div>
+                    <div className='hostedByText'>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</div>
                     <div className='arsenal-sc-regular'>{spot.description}</div>
                 </div>
                 <div className='reserveArea'>
                     <div className='priceReviewArea'>
-                           <div>{spot.price} night</div> <div><FaStar /> #.#</div> <div># reviews</div>
+                           <div className='spotPrice'>{spot.price} night</div> <div><FaStar /> #.#</div> <div># reviews</div>
                     </div>
-                    <button onClick={alertMsg}>Reserve</button>
+                    <div className='buttonDiv'>
+                        <button onClick={alertMsg}>Reserve</button>
+                    </div>
                 </div>
+            </div>
+            <div className='reviewArea'>
+                <div className='reviewHeader'>
+                <div><FaStar /> </div><div><h2>#.#</h2></div><div><h2># Reviews</h2></div>
+                </div>
+                <div className='divider'></div>
+                <div className='reviewEntryArea'>
+                    <div>Reviewer First Name</div>
+                    <div>Date of Review</div>
+                    <div>Review Details Text will be in paragraph format</div>
+                </div>
+                
+                
             </div>
         </div>
         </>
