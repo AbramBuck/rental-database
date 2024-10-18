@@ -50,29 +50,32 @@
 }
 
 .heroImageArea {
-    width: 600px;
+    width: 650px;
     background-color: azure;
-    padding-right: 10px;   
+    padding-right: 15px;   
 }
 
 .heroImage {
-    width: 600px;
+    width: 650px;
+    height: 335px;
+    object-fit: cover;
     border-radius: 10px;
 }
 
 .sideImagesArea {
-    width: 390px;
+    width: 340px;
+    height: 340px;
     background-color: azure;
     display: flex;
+    align-content: first baseline;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 15px;
 }
 
 .sideImage {
-    width: 120px;
-    height: 165px;
-    flex-basis: calc(50% - 10px);
+    width: 160px;
+    height: 160px;
     border-radius: 10px;
 }
 

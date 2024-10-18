@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useModal } from '../../context/Modal';
+//import { useModal } from '../../context/Modal';
 //import * as sessionActions from '../../store/session';
 import * as spotActions from '../../store/spotActions';
 import '../../components/CreateSpotForm/CreateSpotForm.css';
+import { Navigate } from 'react-router-dom';
 
 function CreateSpotFormModal() {
+  let redirectId = 1;
   const dispatch = useDispatch();
+  const [redirect, setRedirect] = useState(false);
   const [country, setCountry] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -22,7 +25,7 @@ function CreateSpotFormModal() {
   const [image4Url, setImage4Url] = useState("");
   const [image5Url, setImage5Url] = useState("");
   const [errors, setErrors] = useState({});
-  const { closeModal } = useModal();
+  //const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,26 +53,30 @@ function CreateSpotFormModal() {
         console.log(createdSpot.id);
         console.log(createdSpot);
         console.log('=================createdSpot-----IDabove================')
-    //   await dispatch(spotActions.addImageToSpot(
-    //    createdSpot.id,
-    //     previewUrl,
-    //     true 
-    //   ));
+      await dispatch(spotActions.addImageToSpot(
+       createdSpot.id,
+        previewUrl,
+        true 
+      ));
       
-    //   // Filter out empty URLs
-    //   const additionalImages = [image2Url, image3Url, image4Url, image5Url].filter(Boolean);
-    //   console.log('===================ADDITIONAL IMAGES BELOW=========================')
-    //   console.log(additionalImages);
-    //   console.log('===================ADDITIONAL IMAGES ABOVE=========================')
-    //   for (const imageUrl of additionalImages) {
-    //     await dispatch(spotActions.addImageToSpot(
-    //       createdSpot.id,
-    //       imageUrl,
-    //       false 
-    //     ));
-    //   }
+      redirectId = createdSpot.id;
+      // Filter out empty URLs
+      const additionalImages = [image2Url, image3Url, image4Url, image5Url].filter(Boolean);
+      console.log('===================ADDITIONAL IMAGES BELOW=========================')
+      console.log(additionalImages);
+      console.log('===================ADDITIONAL IMAGES ABOVE=========================')
+      for (const imageUrl of additionalImages) {
+        await dispatch(spotActions.addImageToSpot(
+          createdSpot.id,
+          imageUrl,
+          false
+        ));
+      }
+      
+      
+      setRedirect(true);
+      //console.log("Spot created with images successfully!");
 
-    //   console.log("Spot created with images successfully!");     
   
     } catch (error) {
       console.error("Error submitting the form:", error);
@@ -81,6 +88,10 @@ function CreateSpotFormModal() {
       }
     }
   };
+
+  if (redirect) {
+    return <Navigate to={`/spots/${redirectId}`} replace />;
+  }
 
   return (
     <>
@@ -139,6 +150,7 @@ function CreateSpotFormModal() {
                 Latitiude
                 </label>
                 <input className='latInput'
+                    placeholder="Must be within -90 and 90"
                     type="text" 
                     value={lat}
                     onChange={(e) => setLatitude(e.target.value)}/>
@@ -148,6 +160,7 @@ function CreateSpotFormModal() {
                     Longitude
                 </label>
                 <input
+                placeholder="Must be within -180 and 180"
                 type="text"
                 value={lng}
                 onChange={(e) => setLongitude(e.target.value)} required/>
@@ -177,6 +190,7 @@ function CreateSpotFormModal() {
           Set a base price for your rental location.
           <input className='fullInputWidth'
             type="text"
+            placeholder="Must be a positive number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required

@@ -116,6 +116,7 @@ export const addImageToSpot = (spotId, imageUrl, isPreview = false) => async (di
       }
   
       const image = await response.json();
+      dispatch(addImage(image));
       return image;
     } catch (error) {
       console.error('Error adding image to spot:', error);
