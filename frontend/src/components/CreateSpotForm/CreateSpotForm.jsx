@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
-import * as sessionActions from '../../store/session';
-import './SignupForm.css';
+//import * as sessionActions from '../../store/session';
+import * as spotActions from '../../store/spotActions';
+import '../../components/CreateSpotForm/CreateSpotForm.css';
 
 function CreateSpotFormModal() {
   const dispatch = useDispatch();
@@ -10,8 +11,8 @@ function CreateSpotFormModal() {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  const [lat, setLatitude] = useState("");
+  const [lng, setLongitude] = useState("");
   const [description, setDescription] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -23,48 +24,70 @@ function CreateSpotFormModal() {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
-  const handleSubmit = (e) => { // this is the area that will call the thunk and which will POST
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      setErrors({});
-      return dispatch(
-        sessionActions.signup({
-          email,
-          username,
-          firstName,
-          lastName,
-          password
-        })
-      )
-        .then(closeModal)
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data?.errors) {
-            setErrors(data.errors);
-          }
-        });
-    }
+  
+    const spotData = {
+      country,
+      address,
+      city,
+      state,
+      description,
+      name,
+      price,
+      lat,
+      lng
+    };
+  
+    try {
+      
+      const createdSpot = await dispatch(spotActions.createSpot(spotData));
+        console.log('=================createdSpotBELOW================');
+        console.log(createdSpot);
+        console.log('=================createdSpotABOVE================')
+        console.log('=================createdSpot-----IDbelow================')
+        console.log(createdSpot.id);
+        console.log('=================createdSpot-----IDabove================')
+      await dispatch(spotActions.addImageToSpot(
+       createdSpot.id,
+        previewUrl,
+        true 
+      ));
+      
+    //   // Filter out empty URLs
+    //   const additionalImages = [image2Url, image3Url, image4Url, image5Url].filter(Boolean);
+    //   console.log('===================ADDITIONAL IMAGES BELOW=========================')
+    //   console.log(additionalImages);
+    //   console.log('===================ADDITIONAL IMAGES ABOVE=========================')
+    //   for (const imageUrl of additionalImages) {
+    //     await dispatch(spotActions.addImageToSpot(
+    //       createdSpot.id,
+    //       imageUrl,
+    //       false 
+    //     ));
+    //   }
 
-    return setErrors({
-        country: "You must enter a country",
-        address: "You must enter an address" ,
-        city: "You must enter a city",
-        state: "You must enter a state",
-        description: "You must enter a description",
-        name: "You must enter a spot name",
-        price: "You must enter a price per night",
-        previewUrl: "You must enter a preview image url"
-    });
+    //   console.log("Spot created with images successfully!");     
+  
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+
+      if (error.response && error.response.data.errors) {
+        setErrors(error.response.data.errors);
+      } else {
+        setErrors({ general:" An unexpected error occured." });
+      }
+    }
   };
 
   return (
     <>
-    <div className='loginmodal-container'>
+    <div className='modal-container'>
       <h1>Create A Spot</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Country
-          <input
+          <input className='fullInputWidth'
             type="text"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
@@ -74,7 +97,7 @@ function CreateSpotFormModal() {
         {errors.country && <p>{errors.country}</p>}
         <label>
           Address
-          <input
+          <input className='fullInputWidth'
             type="text"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
@@ -82,53 +105,127 @@ function CreateSpotFormModal() {
           />
         </label>
         {errors.address && <p>{errors.address}</p>}
+       <div className='cityAndStateDiv'>
+            <div className='cityDiv'>
+                <label>
+                City
+                </label>
+                <input className='cityInput'
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    required
+                />
+            </div>
+            {errors.city && <p>{errors.city}</p>}
+            <div className='stateDiv'>
+                <label>
+                State
+                </label>
+                <input className='stateInput'
+                    type="text"
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    required
+                />
+            </div>
+            {errors.state && <p>{errors.state}</p>}
+        </div>
+        <div className='latAndLngDiv'>
+            <div className='latitudeDiv'>
+                <label>
+                Latitiude
+                </label>
+                <input className='latInput'
+                    type="text" 
+                    value={lat}
+                    onChange={(e) => setLatitude(e.target.value)}/>
+            </div>
+            <div className='longitudeDiv'>
+                <label>
+                    Longitude
+                </label>
+                <input
+                type="text"
+                value={lng}
+                onChange={(e) => setLongitude(e.target.value)} required/>
+            </div>
+        </div>
         <label>
-          City
-          <input
+          Describe your location to guests.
+          <input className='fullInputWidth'
             type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             required
           />
         </label>
-        {errors.city && <p>{errors.city}</p>}
+        {errors.description && <p>{errors.description}</p>}
         <label>
-          State
-          <input
+          Create a name/title for your location.
+          <input className='fullInputWidth'
             type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </label>
-        {errors.city && <p>{errors.city}</p>}
+        {errors.name && <p>{errors.name}</p>}
         <label>
-          Password
-          <input
-            type="password" 
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+          Set a base price for your rental location.
+          <input className='fullInputWidth'
+            type="text"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
+        {errors.price && <p>{errors.price}</p>}
         <label>
-          Confirm Password
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+          Add some photos of your location
+          <input className='fullInputWidth'
+            type="text"
+            value={previewUrl}
+            placeholder='Add Primary Preview Image URL Here'
+            onChange={(e) => setPreviewUrl(e.target.value)}
+            required
+          />
+          {/* Additional images optional */}
+          <input className='fullInputWidth'
+            type="text"
+            placeholder='Add secondary photo here'
+            value={image2Url}
+            onChange={(e) => setImage2Url(e.target.value)}
+            required
+          />
+            <input className='fullInputWidth'
+            type="text"
+            placeholder='Add secondary photo here'
+            value={image3Url}
+            onChange={(e) => setImage3Url(e.target.value)}
+            required
+          />
+          <input className='fullInputWidth'
+            type="text"
+            placeholder='Add secondary photo here'
+            value={image4Url}
+            onChange={(e) => setImage4Url(e.target.value)}
+            required
+          />
+            <input className='fullInputWidth'
+            type="text"
+            placeholder='Add secondary photo here'
+            value={image5Url}
+            onChange={(e) => setImage5Url(e.target.value)}
             required
           />
         </label>
-        {errors.confirmPassword && (
-          <p>{errors.confirmPassword}</p>
-        )}
-        <button type="submit">Sign Up</button>
+        {errors.previewUrl && <p>{errors.previewUrl}</p>}
+        <button type="submit" onClick={handleSubmit}>Create New Spot</button>
       </form>
     </div>
     </>
   );
 }
 
-export default SignupFormModal;
+export default CreateSpotFormModal;

@@ -1,0 +1,72 @@
+.modal-container {
+    max-width: 500px;
+    padding: 15px;
+}
+
+.fullInputWidth {
+    display: flex;
+    align-self: center;
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.halfInputWidth {
+    display: inline-flex;
+    align-self: center;
+    width: 45%;
+    margin-bottom: 10px;
+}
+
+.cityAndStateDiv {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+}
+
+.cityDiv {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.cityInput {
+    width: 95%;
+}
+
+.stateDiv {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-bottom: 10px;
+}
+
+.stateInput {
+    width: 100%;
+}
+
+.latAndLngDiv {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    margin-bottom: 10px;
+}
+
+.latitudeDiv {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin-bottom: 10px;
+}
+
+.latInput{
+    width: 95%;
+}
+
+.longitudeDiv {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-bottom: 10px;
+   
+}

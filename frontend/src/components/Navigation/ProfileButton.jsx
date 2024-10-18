@@ -7,6 +7,9 @@ import LoginFormModal from '../LoginFormModal/LoginFormModal';
 import SignupFormModal from '../SignupFormModal/SignupFormModal';
 import './ProfileButton.css';
 import icon from '../../images/Hearth-Havens_Icon.png'
+import OpenModalMenuItem from './OpenModalMenuItem';
+import CreateSpotFormModal from '../CreateSpotForm/CreateSpotForm';
+
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -46,6 +49,13 @@ function ProfileButton({ user }) {
 
   return (
     <>
+      <div> 
+        <OpenModalMenuItem
+          itemText="Create A Spot"
+          onItemClick={closeMenu}
+          modalComponent={<CreateSpotFormModal />}
+        />
+      </div> 
       <img className='buttonIcon' src={icon} alt="Hearths & Havens" />
       <button onClick={toggleMenu} className='profileButton'>
         {!user ? "Login or Signup" : user.username}

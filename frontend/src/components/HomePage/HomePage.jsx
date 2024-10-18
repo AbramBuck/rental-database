@@ -18,28 +18,23 @@ dispatch(fetchSpots());
 
 
 return (
-    <>
     <div className='pageWrapper'>
-            <img className='logoOverlay' src={logo}></img>
-            <div className='bgImage'><img src={bgImage} alt="Stormwind" /></div>
+        <img className='logoOverlay' src={logo} alt="Hearths & Haven Icon"></img>
+        <div className='bgImage'><img src={bgImage} alt="Stormwind" /></div>
         <div className='textOverlay arsenal-sc-bold'>Relax as you experience the wonderous locations of Azeroth!</div>
         <div> 
             <div className='allSpotsArea'>
                 {/* this div will generate a div for each spot */}
                 {spots.map((spot) =>(
-                    <>
                     <div key={spot.id}>
                         <Link to={`/spots/${spot.id}`}>
                         <img src={spot.previewImage} alt={spot.name} className="allSpotImg"/>
                         </Link>
                     </div>
-                    <div>{spot.id}</div>
-                    </>
                 ))};
             </div>
         </div>
     </div>
-    </>
 )
 }
 
