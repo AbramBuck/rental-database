@@ -36,23 +36,25 @@ function CreateSpotFormModal() {
       name,
       price,
       lat,
-      lng
+      lng,
+      previewUrl
     };
   
     try {
       
       const createdSpot = await dispatch(spotActions.createSpot(spotData));
         console.log('=================createdSpotBELOW================');
-        console.log(createdSpot);
+        console.log(spotData);
         console.log('=================createdSpotABOVE================')
         console.log('=================createdSpot-----IDbelow================')
         console.log(createdSpot.id);
+        console.log(createdSpot);
         console.log('=================createdSpot-----IDabove================')
-      await dispatch(spotActions.addImageToSpot(
-       createdSpot.id,
-        previewUrl,
-        true 
-      ));
+    //   await dispatch(spotActions.addImageToSpot(
+    //    createdSpot.id,
+    //     previewUrl,
+    //     true 
+    //   ));
       
     //   // Filter out empty URLs
     //   const additionalImages = [image2Url, image3Url, image4Url, image5Url].filter(Boolean);

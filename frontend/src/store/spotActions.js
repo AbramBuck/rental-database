@@ -79,6 +79,10 @@ export const createSpot = (addedSpot) => async (dispatch) => {
             })
         });
 
+        if (response.status === 400) {
+            const errorData = await response.json(); // Get error details
+            throw new Error(errorData.message || 'Validation error occurred');
+        }
         if (!response.ok) {
             throw new Error('Failed to create spot');
         }
