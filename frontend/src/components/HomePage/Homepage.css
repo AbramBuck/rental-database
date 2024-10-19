@@ -85,6 +85,13 @@
     font-style: normal;
   }
 
+  .spotCard{
+    background-color: rgb(203, 167, 114);
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgb(116, 108, 77);
+    height: fit-content;
+  }
+
   .allSpotsArea {
     display: flex;
     flex-direction: row;
@@ -101,7 +108,9 @@
   .allSpotImg {
     margin-top: 20px;
     width: 225px;
+    height: 175px;
     border-radius: 5px;
+    object-fit: cover;
   }
 
 .spotInfoDiv {

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSpotDetails } from '../../store/spotActions';
 import { FaStar } from "react-icons/fa6";
+import { RxDotFilled } from "react-icons/rx";
 import image1 from '../../images/defaultImage-01.jpg'
 import image2 from '../../images/defaultImage-02.jpg'
 import image3 from '../../images/defaultImage-03.jpg'
@@ -13,11 +14,19 @@ function SpotDetailsPage() {
     const { spotId } = useParams();
     const dispatch = useDispatch();
     const spot = useSelector((state) => state.spots.spotDetails);
-    console.log('=============HERE DOWN====================');
-    console.log(spot); // info on the spot. {id, ownerId, price, name, description, lat, lng address, city, state, }
-    console.log('=============HERE UP====================');
    
-    console.log(spot);
+// info on the spot. {id, ownerId, price, name, description, lat, lng address, city, state, }
+
+    let reviewCoutner;
+    
+    if (spot.numReviews == 0) {
+        reviewCoutner ="";
+    }else if (spot.numReviews == 1) {
+        reviewCoutner= `${spot.numReviews} Review`;
+    } else {
+         reviewCoutner=`${spot.numReviews} Reviews`;
+    };
+
 
     useEffect(() => {
         const loadSpotDetails = async () => {
@@ -80,7 +89,7 @@ function SpotDetailsPage() {
                 </div>
                 <div className='reserveArea'>
                     <div className='priceReviewArea'>
-                           <div className='spotPrice'>{spot.price} night</div> <div className='arsenal-sc-bold-25px star'><FaStar /> {spot.avgStarRating == 0 ? "New" : spot.avgRating.toFixed(1)}</div> <div className='arsenal-sc-bold-25px star'>{spot.numReviews} reviews</div>
+                           <div className='spotPrice'>{spot.price} night</div> <div className='arsenal-sc-bold-25px star'><FaStar /> {spot.avgStarRating == 0 ? "New" : spot.avgStarRating.toFixed(1)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div className='arsenal-sc-bold-25px star'>{reviewCoutner}</div>
                     </div>
                     <div className='buttonDiv'>
                         <button onClick={alertMsg}>Reserve</button>
@@ -89,7 +98,7 @@ function SpotDetailsPage() {
             </div>
             <div className='reviewArea'>
                 <div className='reviewHeader'>
-                <div className='star'><FaStar /> {spot.avgStarRating == 0 ? "New" : spot.avgRating.toFixed(1)}</div><div><h2>{spot.numReviews} Reviews</h2></div>
+                <div className='star'><FaStar /> {spot.avgStarRating == 0 ? "New" : spot.avgStarRating.toFixed(1)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div><h2>{reviewCoutner}</h2></div>
                 </div>
                 <div className='divider'></div>
                 <div className='reviewEntryArea'>

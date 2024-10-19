@@ -29,7 +29,7 @@ function LoginFormModal() {
     e.preventDefault();
     setErrors({});
     // Correct way to pass credentials as an object
-    return dispatch(sessionActions.login({ credential: "TheBoyKing", password: "password4" }))
+    return dispatch(sessionActions.login({ credential: "Demo-Dweller", password: "password" }))
       .then(closeModal)
       .catch(async (res) => {
         const data = await res.json();

@@ -26,7 +26,7 @@ module.exports = {
         lng: -77.0365,
         name: "Stormwind Castle",
         description: "An iconic fortress in the heart of Stormwind, the capital of the Alliance. Guests will enjoy a majestic view of the Valley of Heroes, with access to the bustling trade district and scenic canals.",
-        price: 350
+        price: 9500
       },
       {
         ownerId: 8,
@@ -38,7 +38,7 @@ module.exports = {
         lng: -74.0060,
         name: "Grommash Hold",
         description: "This sturdy, rugged fortress lies at the heart of Orgrimmar, home to Warchiefs past and present. Adventurers can immerse themselves in Horde culture and take in the fiery sunsets over the red dunes of Durotar.",
-        price: 275
+        price: 9500
       },
       {
         ownerId: 9,
@@ -50,10 +50,10 @@ module.exports = {
         lng: -122.3321,
         name: "Dalaran Floating City Loft",
         description: "Enjoy a magical stay in the floating city of Dalaran, home to the Kirin Tor and some of the most powerful wizards in Azeroth. This luxurious loft offers panoramic views of Crystalsong Forest from above the clouds.",
-        price: 500
+        price: 7500
       },
       {
-        ownerId: 4,
+        ownerId: 1,
         address: "999 Darkshire Ln",
         city: "Darkshire",
         state: "Duskwood",
@@ -74,7 +74,7 @@ module.exports = {
         lng: -0.1278,
         name: "Naxxramas Necropolis Suite",
         description: "A floating necropolis above Dragonblight, this is the ultimate stay for those with a dark side. Once home to the infamous lich Kel'Thuzad, this chilling suite offers eerie ambiance and frosty views of the tundra below.",
-        price: 600
+        price: 3000
       },
       {
         ownerId: 4,
@@ -98,7 +98,7 @@ module.exports = {
         lng: 2.3522,
         name: "Emerald Dream Glade",
         description: "A surreal and tranquil sanctuary within the Emerald Dream. This untouched forest offers serenity and a connection to nature like no other, ideal for druids and nature enthusiasts. Be prepared for an otherworldly experience.",
-        price: 450
+        price: 600
       },
       {
         ownerId: 4,
@@ -110,7 +110,7 @@ module.exports = {
         lng: 139.6917,
         name: "Zaralek Cavern Hideaway",
         description: "Hidden deep beneath the Dragon Isles, this cavernous hideaway offers visitors a mysterious and ancient setting, with glowing crystals and subterranean wonders. Explore the dragonkin ruins and enjoy the calm silence below.",
-        price: 325
+        price: 800
       },
       {
         ownerId: 5,
@@ -146,7 +146,7 @@ module.exports = {
         lng: -6.2603,
         name: "Khaz Algar Dwarven Retreat",
         description: "An ancient dwarven stronghold carved into the mountains, Khaz Algar offers guests a rugged, subterranean adventure with access to ancient forges and echoing halls. Ideal for lovers of history and dwarven craftsmanship.",
-        price: 400
+        price: 8400
       },
       {
         ownerId: 7,
@@ -158,7 +158,7 @@ module.exports = {
         lng: 18.0686,
         name: "Suramar Nightborne Villa",
         description: "This luxurious villa in the heart of Suramar is perfect for those who wish to experience the opulent lifestyle of the Nightborne. With access to fine wine and magical gardens, this stay offers elegance and charm beyond compare.",
-        price: 550
+        price: 8550
       },
       {
         ownerId: 7,
@@ -170,10 +170,10 @@ module.exports = {
         lng: 37.6173,
         name: "Silvermoon Elven Manor",
         description: "An exquisite elven manor within the gleaming city of Silvermoon. This property is a true work of art, with ornate designs and a tranquil atmosphere. Perfect for those who appreciate elven architecture and culture.",
-        price: 475
+        price: 9475
       },
       {
-        ownerId: 4,
+        ownerId: 2,
         address: "33 Lakeshire Rd",
         city: "Redridge Mountains",
         state: "Eastern Kingdoms",

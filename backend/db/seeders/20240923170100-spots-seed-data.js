@@ -17,40 +17,40 @@ module.exports = {
 
     await Spot.bulkCreate([
       {
-        ownerId: users.id,
-        address: "123 Disney Lane",
-        city: "San Francisco",
-        state: "California",
-        country: "United States of America",
-        lat: 37.7645358,
-        lng: -333.4730327,
-        name: "App Academy",
-        description: "Place where web developers are created",
-        price: 123
+        ownerId: 1,
+        address: "12 Canal Side House",
+        city: "Stormwind",
+        state: "Elwynn Forest",
+        country: "Azeroth",
+        lat: 49.842527,
+        lng: -73.674823,
+        name: "Canal-side House",
+        description: "A quaint little house by the canals of Stormwind. Perfect for a quiet evening.",
+        price: 550
       },
       {
-        ownerId: users.id,
-        address: "368 Mickey Lane",
-        city: "Oakland",
-        state: "California",
-        country: "United States of America",
-        lat: 27.7645358,
-        lng: -222.4730327,
-        name: "App Academy",
-        description: "Place where web developers are created",
-        price: 123
+        ownerId: 2,
+        address: "23 Trade District Shop",
+        city: "Stormwind",
+        state: "Elwynn Forest",
+        country: "Azeroth",
+        lat: 49.847123,
+        lng: -73.678456,
+        name: "Lion's Pride Inn & Shop",
+        description: "A cozy shop that doubles as an inn in the bustling Trade District.",
+        price: 200
       },
       {
-        ownerId: users.id,
-        address: "412 Peach Lane",
-        city: "Nashville",
-        state: "Tennessee",
-        country: "United States of America",
-        lat: 17.7645358,
-        lng: -111.4730327,
-        name: "App Academy",
-        description: "Place where web developers are created",
-        price: 123
+        ownerId: 3,
+        address: "1 Mage Tower Circle",
+        city: "Stormwind",
+        state: "Elwynn Forest",
+        country: "Azeroth",
+        lat: 49.849851,
+        lng: -73.675912,
+        name: "Mage Tower",
+        description: "A towering structure, home to powerful mages and arcane studies.",
+        price: 3000
       }
     ], { validate: true });
   },
@@ -59,7 +59,7 @@ module.exports = {
     options.tableName = 'Spots';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
-      address: { [Op.in]: ['123 Disney Lane', '368 Mickey Lane', '412 Peach Lane'] }
+      address: { [Op.in]: ['12 Canal Side House', '23 Trade District Shop', '1 Mage Tower Circle'] }
     }, {});
   }
 };

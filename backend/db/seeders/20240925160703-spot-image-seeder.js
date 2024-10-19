@@ -12,15 +12,18 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182233/Stormwind_3_ynqn8u.jpg",
+        preview: true
       },
       {
         spotId: 2,
-        url: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_4_uzmn9u.jpg",
+        preview: true
       },
       {
         spotId: 3,
-        url: "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_5_jd6me0.jpg",
+        preview: true
       }
     ], { validate: true });
   },
@@ -31,9 +34,9 @@ module.exports = {
     return queryInterface.bulkDelete(options, {
       url: {
         [Op.in]: [
-          "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
-          "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
-          "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182233/Stormwind_3_ynqn8u.jpg", 
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_4_uzmn9u.jpg", 
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_5_jd6me0.jpg"
         ]
       }
     }, {});

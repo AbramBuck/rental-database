@@ -12,60 +12,170 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 4,
-        url: "https://static.wikia.nocookie.net/wowpedia/images/e/eb/Stormwindcitypicture.jpg/revision/latest/scale-to-width-down/1920?cb=20180802124508"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182233/Stormwind_1_nw9out.jpg://static.wikia.nocookie.net/wowpedia/images/e/eb/Stormwindcitypicture.jpg/revision/latest/scale-to-width-down/1920?cb=20180802124508",
+        preview: true
+      },
+      {
+        spotId: 4,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_6_fushzp.jpg",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_2_tradedistrict_o7h5mo.jpg",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184315/Lakeshire_4_eby2rj.jpg",
+        preview: false
+      },
+      {
+        spotId: 4,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184310/Westfall_1_tjggly.jpg",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_6_fushzp.jpg",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_2_tradedistrict_o7h5mo.jpg",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184315/Lakeshire_4_eby2rj.jpg",
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184310/Westfall_1_tjggly.jpg",
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_6_fushzp.jpg",
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_2_tradedistrict_o7h5mo.jpg",
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184315/Lakeshire_4_eby2rj.jpg",
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184310/Westfall_1_tjggly.jpg",
+        preview: false
       },
       {
         spotId: 5,
-        url: "https://static.wikia.nocookie.net/wowpedia/images/4/48/Orgrimmar_070910_000058_-_Kirkburn_12319.jpg/revision/latest/scale-to-width-down/1000?cb=20100710172653"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184309/Orgrimmar_1_drn8oo.jpg",
+        preview: true
       },
       {
         spotId: 6,
-        url: "https://static.wikia.nocookie.net/wowpedia/images/4/40/Dalaran_Northrend.jpg/revision/latest/scale-to-width-down/1000?cb=20080808132932"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184309/Dalaran_1_tscvig.jpg",
+        preview: true
       },
       {
         spotId: 7,
-        url: "https://static.wikia.nocookie.net/wowpedia/images/b/b9/Darkshire.jpg/revision/latest/scale-to-width-down/1000?cb=20230526233102"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184309/Darkshire_1_sn4tot.jpg",
+        preview: true
       },
       {
         spotId: 8,
-        url: "https://static.wikia.nocookie.net/wowpedia/images/d/d3/Naxxramas.jpg/revision/latest/scale-to-width-down/1000?cb=20100719013321"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729313250/Naxxramas_1_yiol2o.jpg",
+        preview: true
       },
       {
         spotId: 9,
-        url: "https://static.wikia.nocookie.net/wowpedia/images/e/eb/Moonbrook_2.jpg/revision/latest/scale-to-width-down/1000?cb=20230606140216"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729313392/SentinalHill_1_teoz3u.jpg",
+        preview: true
       },
       {
         spotId: 10,
-        url: "https://pbs.twimg.com/media/F9ctPrqWMAAnA5l.jpg:large"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184310/Amirdrassil_1_ukqnpw.jpg",
+        preview: true
       },
       {
         spotId: 11,
-        url: "https://wow.zamimg.com/uploads/screenshots/normal/1105901.jpg"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729313665/ZarelekCavern_1_mycbyu.jpg",
+        preview: true
       },
       {
         spotId: 12,
-        url: "https://bnetcmsus-a.akamaihd.net/cms/blog_thumbnail/qd/QDGILH0V2KLF1703268521138.png"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184310/EmeraldDream_1_eq7qvw.jpg",
+        preview: true
       },
       {
         spotId: 13,
-        url: "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/08/world-of-warcraft-hallowfall-arathi-renown-guide-1.jpg?q=70&fit=crop&w=1140&h=&dpr=1"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184311/Hallowfall_1_d4yptt.jpg",
+        preview: true
       },
       {
         spotId: 14,
-        url: "https://www.warcrafttavern.com/wp-content/uploads/2024/08/Khaz-Algar-Dornogal-City.jpg"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184311/Khaz-Algar-Dorngal-City_1_ywzrrh.jpg",
+        preview: true
       },
       {
         spotId: 15,
-        url: "https://i.ytimg.com/vi/cGLHRKNyx6c/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGD0gOyh_MA8=&rs=AOn4CLDjiGks6WCAE_k4nH_VAj4T0CiovQ"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184311/Surramar_1_y0pdtt.jpg",
+        preview: true
       },
       {
         spotId: 16,
-        url: "https://static.wikia.nocookie.net/wowpedia/images/d/d4/TheBazaar1.jpg/revision/latest/scale-to-width-down/640?cb=20061129154332"
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184312/SilverMoon_4_b8osdu.jpg",
+        preview: true
+      },
+      {
+        spotId: 16,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184313/SilverMoon_5_nof3rk.jpg",
+        preview: false
+      },
+      {
+        spotId: 16,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184313/SilverMoon_1_kwfbq2.jpg",
+        preview: false
+      },
+      {
+        spotId: 16,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184311/SilverMoon_2_heg8dj.jpg",
+        preview: false
+      },
+      {
+        spotId: 16,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184312/SilverMoon_3_t7bphc.jpg",
+        preview: false
       },
       {
         spotId: 17,
-        url: "https://static.wikia.nocookie.net/wowpedia/images/4/43/Lakeshire_Inn.jpg/revision/latest/scale-to-width-down/1200?cb=20200914124925"
-      }
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184312/Lakeshire_2_otnhyt.jpg",
+        preview: true
+      },
+      {
+        spotId: 17,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184314/Lakeshire_1_xynzkf.jpg",
+        preview: false
+      },
+      {
+        spotId: 17,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184315/Lakeshire_3_ssiwkm.jpg",
+        preview: false
+      },
+      {
+        spotId: 17,
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184315/Lakeshire_4_eby2rj.jpg",
+        preview: false
+      },
+      
     ], { validate: true });
   },
 
@@ -75,20 +185,32 @@ module.exports = {
     return queryInterface.bulkDelete(options, {
       url: {
         [Op.in]: [
-          "https://static.wikia.nocookie.net/wowpedia/images/e/eb/Stormwindcitypicture.jpg/revision/latest/scale-to-width-down/1920?cb=20180802124508", 
-          "https://static.wikia.nocookie.net/wowpedia/images/4/48/Orgrimmar_070910_000058_-_Kirkburn_12319.jpg/revision/latest/scale-to-width-down/1000?cb=20100710172653", 
-          "https://static.wikia.nocookie.net/wowpedia/images/4/40/Dalaran_Northrend.jpg/revision/latest/scale-to-width-down/1000?cb=20080808132932",
-          "https://static.wikia.nocookie.net/wowpedia/images/b/b9/Darkshire.jpg/revision/latest/scale-to-width-down/1000?cb=20230526233102",
-          "https://static.wikia.nocookie.net/wowpedia/images/d/d3/Naxxramas.jpg/revision/latest/scale-to-width-down/1000?cb=20100719013321",
-          "https://static.wikia.nocookie.net/wowpedia/images/e/eb/Moonbrook_2.jpg/revision/latest/scale-to-width-down/1000?cb=20230606140216",
-          "https://pbs.twimg.com/media/F9ctPrqWMAAnA5l.jpg:large",
-          "https://wow.zamimg.com/uploads/screenshots/normal/1105901.jpg",
-          "https://bnetcmsus-a.akamaihd.net/cms/blog_thumbnail/qd/QDGILH0V2KLF1703268521138.png",
-          "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/08/world-of-warcraft-hallowfall-arathi-renown-guide-1.jpg?q=70&fit=crop&w=1140&h=&dpr=1",
-          "https://www.warcrafttavern.com/wp-content/uploads/2024/08/Khaz-Algar-Dornogal-City.jpg",
-          "https://i.ytimg.com/vi/cGLHRKNyx6c/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGD0gOyh_MA8=&rs=AOn4CLDjiGks6WCAE_k4nH_VAj4T0CiovQ",
-          "https://static.wikia.nocookie.net/wowpedia/images/d/d4/TheBazaar1.jpg/revision/latest/scale-to-width-down/640?cb=20061129154332",
-          "https://static.wikia.nocookie.net/wowpedia/images/4/43/Lakeshire_Inn.jpg/revision/latest/scale-to-width-down/1200?cb=20200914124925"
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182233/Stormwind_1_nw9out.jpg://static.wikia.nocookie.net/wowpedia/images/e/eb/Stormwindcitypicture.jpg/revision/latest/scale-to-width-down/1920?cb=20180802124508", 
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184309/Orgrimmar_1_drn8oo.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182233/Stormwind_1_nw9out.jpg://static.wikia.nocookie.net/wowpedia/images/e/eb/Stormwindcitypicture.jpg/revision/latest/scale-to-width-down/1920?cb=20180802124508",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_6_fushzp.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182232/Stormwind_2_tradedistrict_o7h5mo.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184315/Lakeshire_4_eby2rj.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184310/Westfall_1_tjggly.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184309/Orgrimmar_1_drn8oo.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184309/Dalaran_1_tscvig.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184309/Darkshire_1_sn4tot.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729313250/Naxxramas_1_yiol2o.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729313392/SentinalHill_1_teoz3u.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184310/Amirdrassil_1_ukqnpw.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729313665/ZarelekCavern_1_mycbyu.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184310/EmeraldDream_1_eq7qvw.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184311/Hallowfall_1_d4yptt.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184311/Khaz-Algar-Dorngal-City_1_ywzrrh.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184311/Surramar_1_y0pdtt.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184312/SilverMoon_4_b8osdu.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184313/SilverMoon_5_nof3rk.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184313/SilverMoon_1_kwfbq2.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184311/SilverMoon_2_heg8dj.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184312/SilverMoon_3_t7bphc.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184312/Lakeshire_2_otnhyt.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184314/Lakeshire_1_xynzkf.jpg",
+          "https://res.cloudinary.com/di0fa12vz/image/upload/v1729184315/Lakeshire_3_ssiwkm.jpg"
         ]
       }
     }, {});
