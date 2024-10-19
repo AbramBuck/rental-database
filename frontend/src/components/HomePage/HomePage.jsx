@@ -46,7 +46,7 @@ return (
                             </div>
                         </div>
                     </div>
-                ))};
+                ))}
             </div>
             <div className='bgGraphic'></div>
         </div>

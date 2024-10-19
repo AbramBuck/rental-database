@@ -13,7 +13,10 @@ module.exports = {
 
   async up (queryInterface, Sequelize) {
 
-    const users = await User.findOne({ where: {id:1}});
+    const users = await User.findAll({ where: {id: [1, 2, 3]}});
+    if (users.length < 3) {
+      throw new Error('Not all users exist in the User table');
+    }
 
     await Spot.bulkCreate([
       {

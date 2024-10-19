@@ -11,8 +11,8 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await SpotImage.bulkCreate([
       {
+        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182233/Stormwind_1_nw9out.jpg",
         spotId: 4,
-        url: "https://res.cloudinary.com/di0fa12vz/image/upload/v1729182233/Stormwind_1_nw9out.jpg://static.wikia.nocookie.net/wowpedia/images/e/eb/Stormwindcitypicture.jpg/revision/latest/scale-to-width-down/1920?cb=20180802124508",
         preview: true
       },
       {

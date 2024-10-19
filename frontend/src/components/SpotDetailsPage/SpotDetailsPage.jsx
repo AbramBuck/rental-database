@@ -4,29 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchSpotDetails } from '../../store/spotActions';
 import { FaStar } from "react-icons/fa6";
 import { RxDotFilled } from "react-icons/rx";
-import image1 from '../../images/defaultImage-01.jpg'
-import image2 from '../../images/defaultImage-02.jpg'
-import image3 from '../../images/defaultImage-03.jpg'
-import image4 from '../../images/defaultImage-04.jpg'
+import image1 from '../../images/defaultImage-01.jpg';
+import image2 from '../../images/defaultImage-02.jpg';
+import image3 from '../../images/defaultImage-03.jpg';
+import image4 from '../../images/defaultImage-04.jpg';
 import '../SpotDetailsPage/SpotStylesPage.css';
+
+// some info on the spot object {id, ownerId, price, name, description, lat, lng address, city, state, }
 
 function SpotDetailsPage() {
     const { spotId } = useParams();
     const dispatch = useDispatch();
     const spot = useSelector((state) => state.spots.spotDetails);
-   
-// info on the spot. {id, ownerId, price, name, description, lat, lng address, city, state, }
-
     let reviewCoutner;
-    
-    if (spot.numReviews == 0) {
-        reviewCoutner ="";
-    }else if (spot.numReviews == 1) {
-        reviewCoutner= `${spot.numReviews} Review`;
-    } else {
-         reviewCoutner=`${spot.numReviews} Reviews`;
-    };
-
 
     useEffect(() => {
         const loadSpotDetails = async () => {
@@ -45,6 +35,14 @@ function SpotDetailsPage() {
     const alertMsg = () => {
         alert('Feature Coming Soon!');
     };
+
+    if (spot.numReviews == 0) {
+        reviewCoutner ="";
+     }else if (spot.numReviews == 1) {
+        reviewCoutner= `${spot.numReviews} Review`;
+    } else {
+        reviewCoutner=`${spot.numReviews} Reviews`;
+    }
 
     return (
         <>

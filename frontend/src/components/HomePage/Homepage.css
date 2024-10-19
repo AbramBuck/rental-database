@@ -89,7 +89,7 @@
     background-color: rgb(203, 167, 114);
     border-radius: 10px;
     box-shadow: 5px 5px 20px rgb(116, 108, 77);
-    height: fit-content;
+    height: 220px;
   }
 
   .allSpotsArea {
@@ -100,7 +100,6 @@
     padding-left: 50px;
     gap: 15px;
     width: 1000px;
-
     background-color: bisque;
     border-radius: 10px;
   }
