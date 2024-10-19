@@ -41,3 +41,14 @@
     height: 40px;
 }
 
+.createSpotLink {
+    color: rgb(234, 199, 22);
+    font-size: 25px;
+    font-weight: 600;
+    
+}
+
+.createSpotLink:hover {
+    color: white;
+    cursor: pointer;
+}

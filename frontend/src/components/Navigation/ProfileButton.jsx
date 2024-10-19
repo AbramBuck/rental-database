@@ -49,7 +49,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <div> 
+      <div className='createSpotLink'> 
         <OpenModalMenuItem
           itemText="Create A Spot"
           onItemClick={closeMenu}
