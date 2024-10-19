@@ -34,18 +34,17 @@ return (
                     <div key={spot.id}>
                         <Link to={`/spots/${spot.id}`}>
                         <img src={spot.previewImage} title={spot.name} alt={spot.name} className="allSpotImg"/>
-                        
+                        </Link>
                         <div className='spotInfoDiv'>
                             <div className='cityStateStarDiv'>
-                                <div>{spot.city}</div>
-                                <div>{spot.state}</div>
+                                <p>{spot.city},</p>
+                                <p>{spot.state}</p>
                             </div>
-                            <div className='priceDiv'>
-                                <div><h3>{spot.price}</h3> night</div>
-                                <div><FaStar /> {spot.avgRating == 0 ? "New" : spot.avgRating}</div>
+                            <div className='priceAreaDiv'>
+                                <div className='priceDiv'><h3>${spot.price}</h3> <p>night</p></div>
+                                <div className='ratingAreaDiv'><FaStar className='star' /></div> <div className='ratingDiv'>{spot.avgRating == 0 ? <p className='rating'>New</p> : spot.avgRating.toFixed(1)}</div>
                             </div>
                         </div>
-                        </Link>
                     </div>
                 ))};
             </div>

@@ -17,6 +17,8 @@ function SpotDetailsPage() {
     console.log(spot); // info on the spot. {id, ownerId, price, name, description, lat, lng address, city, state, }
     console.log('=============HERE UP====================');
    
+    console.log(spot);
+
     useEffect(() => {
         const loadSpotDetails = async () => {
             await dispatch(fetchSpotDetails(spotId));
@@ -40,7 +42,7 @@ function SpotDetailsPage() {
         <div className='pageWrapper'>
             <div className='topTextArea'>
                 <h1 className='titleText'>{spot.name}</h1>
-                <h3 className='text'>{spot.city}, {spot.state},{spot.country}</h3>
+                <h3 className='text'>LOCATION: {spot.city}, {spot.state},{spot.country}</h3>
             </div>
             <div className='imageArea'>
                 <div className='heroImageArea'><img src={previewImage} alt={spot.name} className='heroImage' /></div>
@@ -78,7 +80,7 @@ function SpotDetailsPage() {
                 </div>
                 <div className='reserveArea'>
                     <div className='priceReviewArea'>
-                           <div className='spotPrice'>{spot.price} night</div> <div><FaStar /> #.#</div> <div># reviews</div>
+                           <div className='spotPrice'>{spot.price} night</div> <div className='arsenal-sc-bold-25px star'><FaStar /> {spot.avgStarRating == 0 ? "New" : spot.avgRating.toFixed(1)}</div> <div className='arsenal-sc-bold-25px star'>{spot.numReviews} reviews</div>
                     </div>
                     <div className='buttonDiv'>
                         <button onClick={alertMsg}>Reserve</button>
@@ -87,7 +89,7 @@ function SpotDetailsPage() {
             </div>
             <div className='reviewArea'>
                 <div className='reviewHeader'>
-                <div><FaStar /> </div><div><h2>#.#</h2></div><div><h2># Reviews</h2></div>
+                <div className='star'><FaStar /> {spot.avgStarRating == 0 ? "New" : spot.avgRating.toFixed(1)}</div><div><h2>{spot.numReviews} Reviews</h2></div>
                 </div>
                 <div className='divider'></div>
                 <div className='reviewEntryArea'>
@@ -95,9 +97,8 @@ function SpotDetailsPage() {
                     <div>Date of Review</div>
                     <div>Review Details Text will be in paragraph format</div>
                 </div>
-                
-                
             </div>
+            <div className='bgGraphicDetailsPage'></div>
         </div>
         </>
     )

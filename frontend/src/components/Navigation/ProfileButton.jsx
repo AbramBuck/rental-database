@@ -51,7 +51,7 @@ function ProfileButton({ user }) {
     <>
       <div className='createSpotLink'> 
         <OpenModalMenuItem
-          itemText="Create A Spot"
+          itemText="Create A Destination"
           onItemClick={closeMenu}
           modalComponent={<CreateSpotFormModal />}
         />

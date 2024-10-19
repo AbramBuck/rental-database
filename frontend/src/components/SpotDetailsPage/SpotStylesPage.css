@@ -5,6 +5,21 @@
     display: flex;
     flex-direction: column;
 }
+
+.bgGraphicDetailsPage {
+    background-image: url(https://res.cloudinary.com/di0fa12vz/image/upload/v1729184313/wowMap_n7qilc.jpg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgb(113, 84, 48); 
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+    opacity: 0.3;
+}
+
 /* Top Text Area */
 .topTextArea {
     display: flex;
@@ -16,8 +31,14 @@
     border-radius: 10px;
     padding: 20px 0px 20px 25px;
     margin: 15px 0px 15px 0px;
-    box-shadow: 5px 5px 3px rgb(134, 123, 83);
-    background-color: blanchedalmond;
+    background: linear-gradient(180deg, #6f5123, #e2d469); 
+    border: 4px solid #666; 
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.3), 
+        inset 0 -2px 5px rgba(255, 255, 255, 0.5); 
+    position: relative; 
+    overflow: hidden; 
 
 }
 
@@ -51,8 +72,8 @@
 
 .heroImageArea {
     width: 650px;
-    background-color: azure;
-    padding-right: 15px;   
+    padding-right: 15px;
+       
 }
 
 .heroImage {
@@ -60,23 +81,27 @@
     height: 335px;
     object-fit: cover;
     border-radius: 10px;
+    box-shadow: 5px 5px 3px rgb(64, 59, 40);
+
 }
 
 .sideImagesArea {
     width: 340px;
     height: 340px;
-    background-color: azure;
     display: flex;
     align-content: first baseline;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 15px;
+
 }
 
 .sideImage {
     width: 160px;
     height: 160px;
     border-radius: 10px;
+    box-shadow: 5px 5px 3px rgb(64, 59, 40);
+
 }
 
 
@@ -103,6 +128,13 @@
     font-style: normal;
   }
   
+  .arsenal-sc-bold-25px {
+    font-family: "Arsenal SC", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 25px;
+  }
+
   .arsenal-sc-regular-italic {
     font-family: "Arsenal SC", sans-serif;
     font-weight: 400;
@@ -205,23 +237,34 @@
 
 .detailsArea {
     width: 60%;
+    height: 115px;
+    border-radius: 10px;
+    overflow: auto;
+    background-color: antiquewhite;
+    padding: 15px;
+    margin-bottom: 30px;
 }
 
   /* DETAILS/RESERVE AREA */
 
   .reserveArea {
     width: 40%;
-    background-color: pink;
-    border-style: solid;
-    border-radius: 10px;
-    border-color: rgb(62, 45, 14);
+    background: linear-gradient(180deg, #ccc, #eee); /* Base color gradient */
+    border: 4px solid #666; /* Darker border for depth */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.3), /* Shadow for depth */
+        inset 0 -2px 5px rgba(255, 255, 255, 0.5); /* Inner highlight for shine */
+    position: relative; /* For absolute positioning of pseudo-elements */
+    overflow: hidden; /* Hide overflow to maintain shape */
+    margin-bottom: 30px;
   }
 
   .priceReviewArea {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap:10px;
+    gap:10%;
     padding: 15px 5px 0px 20px !important;
 
   }
@@ -229,6 +272,12 @@
   .spotPrice {
     font-family: "Rakkas", serif;
     font-size: 25px;
+  }
+
+  .star {
+    font-family: "Rakkas", serif;
+    font-size: 50px;
+    padding-right: 0px;
   }
 
   .buttonDiv {
@@ -273,3 +322,17 @@
     padding: 25px 0px 20px 75px;
 
   }
+
+  /* REVIEW */
+  .shiny-metal-box {
+    width: 300px; /* Width of the box */
+    height: 200px; /* Height of the box */
+    background: linear-gradient(180deg, #ccc, #eee); /* Base color gradient */
+    border: 4px solid #666; /* Darker border for depth */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.3), /* Shadow for depth */
+        inset 0 -2px 5px rgba(255, 255, 255, 0.5); /* Inner highlight for shine */
+    position: relative; /* For absolute positioning of pseudo-elements */
+    overflow: hidden; /* Hide overflow to maintain shape */
+}

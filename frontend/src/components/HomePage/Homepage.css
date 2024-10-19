@@ -37,6 +37,7 @@
     transform: translateY(-75px);
     object-fit: cover;
     z-index: -1;
+    box-shadow: 5px 5px 20px rgb(116, 108, 77);
 }
 /* .bgImage {
     width: 100%;
@@ -103,19 +104,61 @@
     border-radius: 5px;
   }
 
+.spotInfoDiv {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+}
 
 .cityStateStarDiv {
 display: flex;
 flex-direction: row;
-gap: 20px;
+gap: 10px;
+padding: 0;
+margin: 0;
+height: 20px;
+}
+
+.priceAreaDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    width: 45%;
+    height: 20px;
 }
 
 .priceDiv {
     display: flex;
     flex-direction: row;
-    align-self: flex-start;
-}
+    align-items: baseline;
+    gap: 5px;
+    height: 20px;
+} 
 
+.star {
+    font-size: 25px;
+}
 .noStyle{
     color: rgb(62, 60, 34);
+}
+
+.ratingAreaDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 5px;
+    justify-content: flex-end;
+    width: 50%;
+    padding-left: 75px;
+}
+
+.ratingDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.rating {
+    font-size: 15px;
+    font-weight: 500;
 }
