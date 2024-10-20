@@ -389,7 +389,8 @@ console.log(spot.ownerId);
     if (price !== undefined) updatedData.price = price;
     updatedData.ownerId = spot.dataValues.ownerId;
     updatedData.id = spot.dataValues.id;
-    
+    // updatedData.previewUrl = spot.dataValues.previewUrl;
+
     if (Object.keys(updatedData).length === 0 ){
       return res.status(400).json({message: "Bad request"});
     }

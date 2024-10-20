@@ -7,6 +7,7 @@ import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
 import { Modal, ModalProvider } from './context/Modal';
+import EditSpotFormModal from './components/EditSpotFormModal/EditSpotFormModal';
 
 const store = configureStore();
 
@@ -24,8 +25,8 @@ if (process.env.NODE_ENV !== 'production') {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ModalProvider>
-      <Provider store={store}>
+    <ModalProvider >
+      <Provider store={store} value={EditSpotFormModal}>
         <App />
         <Modal />
       </Provider>

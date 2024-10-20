@@ -5,6 +5,8 @@ import Navigation from './components/Navigation/Navigation';
 import * as sessionActions from './store/session';
 import SpotDetailsPage from './components/SpotDetailsPage/SpotDetailsPage';
 import HomePage from './components/HomePage/HomePage';
+import CreateSpotFormModal from './components/CreateSpotForm/CreateSpotForm';
+import ManageSpots from './components/ManageSpots/ManageSpots';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: '/spots/:spotId',
         element: <SpotDetailsPage />
+      },
+      {
+        path: '/spots/new',
+        element: <CreateSpotFormModal />
+      },
+      {
+        path: '/spots/manage',
+        element:<ManageSpots />
       }
     ]
   }

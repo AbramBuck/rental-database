@@ -45,16 +45,17 @@ function ProfileButton({ user }) {
     navigate('/');
   };
 
+  const manageSpot = (e) => {
+    e.preventDefault();
+    navigate('/spots/manage');
+  };
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
 
   return (
     <>
       <div className='createSpotLink'> 
-        <OpenModalMenuItem
-          itemText="Create A Destination"
-          onItemClick={closeMenu}
-          modalComponent={<CreateSpotFormModal />}
-        />
+      {!user ? " " : <OpenModalMenuItem itemText="Create A Destination" onItemClick={closeMenu} modalComponent={<CreateSpotFormModal />}/>}
       </div> 
       <img className='buttonIcon' src={icon} alt="Hearths & Havens" />
       <button onClick={toggleMenu} className='profileButton'>
@@ -68,6 +69,7 @@ function ProfileButton({ user }) {
             <div><p></p>Username: {user.username}</div>
             <div>Name: {user.firstName} {user.lastName}</div>
             <div>Email: {user.email}</div>
+            <div><button onClick={manageSpot}>Manage Spots</button></div>
             <div><button onClick={logout}>Log Out</button></div>
           </div>
           </>

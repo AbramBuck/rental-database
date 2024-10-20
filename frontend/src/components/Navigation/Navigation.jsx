@@ -6,7 +6,6 @@ import logo from '../../images/Hearth-Havens_TextLogo.png';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
-  
     return (
         <div className='topnav'>
                 <div>

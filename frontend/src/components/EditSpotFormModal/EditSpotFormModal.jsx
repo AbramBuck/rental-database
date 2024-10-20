@@ -1,12 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
-//import * as sessionActions from '../../store/session';
 import * as spotActions from '../../store/spotActions';
 import '../../components/CreateSpotForm/CreateSpotForm.css';
 
-
-function CreateSpotFormModal() {
+function EditSpotFormModal({ spot }) {
   const dispatch = useDispatch();
   const [country, setCountry] = useState("");
   const [address, setAddress] = useState("");
@@ -17,17 +15,29 @@ function CreateSpotFormModal() {
   const [description, setDescription] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [previewUrl, setPreviewUrl] = useState("");
-  const [image2Url, setImage2Url] = useState("");
-  const [image3Url, setImage3Url] = useState("");
-  const [image4Url, setImage4Url] = useState("");
-  const [image5Url, setImage5Url] = useState("");
+//   const [previewUrl, setPreviewUrl] = useState("");
+//   const [additionalImages, setAdditionalImages] = useState([]);
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
+  useEffect(() => {
+    if (spot) {
+      setCountry(spot.country);
+      setAddress(spot.address);
+      setCity(spot.city);
+      setState(spot.state);
+      setLatitude(spot.lat);
+      setLongitude(spot.lng);
+      setDescription(spot.description);
+      setName(spot.name);
+      setPrice(spot.price);
+    //   setPreviewUrl(spot.SpotImages.find(image => image.preview)?.url || "");
+    //   setAdditionalImages(spot.SpotImages.filter(image => !image.preview).map(image => image.url));
+    }
+  }, [spot]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     const spotData = {
       country,
       address,
@@ -38,43 +48,26 @@ function CreateSpotFormModal() {
       price,
       lat,
       lng,
-      previewUrl,
+    //   previewUrl
     };
-  
+    
     try {
-      const createdSpot = await dispatch(spotActions.createSpot(spotData));
-      console.log("Created spot:", createdSpot);
-  
+      await dispatch(spotActions.updateSpot(spot.id, spotData));
       closeModal();
-
-      if (createdSpot.id) {
-        await dispatch(spotActions.addImageToSpot(createdSpot.id, previewUrl, true));
-  
-        const additionalImages = [image2Url, image3Url, image4Url, image5Url].filter(Boolean);
-        
-        for (const imageUrl of additionalImages) {
-          await dispatch(spotActions.addImageToSpot(createdSpot.id, imageUrl, false));
-        }
-  
-        window.location.reload();
-      } else {
-        console.error("Failed to create spot, ID is undefined");
-      }
-  
+      window.location.reload();
     } catch (error) {
-      console.error("Error submitting the form:", error);
-      if (error.response && error.response.data.errors) {
-        setErrors(error.response.data.errors);
-      } else {
-        setErrors({ general: "An unexpected error occurred." });
-      }
+
+      console.error("Error:", error);
+      setErrors({ general: "An unexpected error occurred." });
     }
   };
+
+  // Add the rest of your modal code, including input fields and image management
 
   return (
     <>
     <div className='modal-container'>
-      <h1 className='titleText'>Create a New Spot</h1>
+      <h1 className='titleText'>Edit Your Spot</h1>
       <h2 className='subhead'>Where&apos;s your place located?</h2>
       <caption className='caption'>Guests will only get your exact address once they booked a reservation.</caption>
       <form onSubmit={handleSubmit}>
@@ -182,52 +175,11 @@ function CreateSpotFormModal() {
           />
         </label>
         {errors.price && <p>{errors.price}</p>}
-        <h2 className='subhead'>Liven up your spot with photos</h2>
-        <caption className='caption'>Submit a link to at least one photo to publish your spot.</caption>
-        <label className='label'>
-          <input className='fullInputWidth'
-            type="text"
-            value={previewUrl}
-            placeholder='Preview Image URL'
-            onChange={(e) => setPreviewUrl(e.target.value)}
-            required
-          />
-          {/* Additional images optional */}
-          <input className='fullInputWidth'
-            type="text"
-            placeholder='Image URL'
-            value={image2Url}
-            onChange={(e) => setImage2Url(e.target.value)}
-            required
-          />
-            <input className='fullInputWidth'
-            type="text"
-            placeholder='Image URL'
-            value={image3Url}
-            onChange={(e) => setImage3Url(e.target.value)}
-            required
-          />
-          <input className='fullInputWidth'
-            type="text"
-            placeholder='Image URL'
-            value={image4Url}
-            onChange={(e) => setImage4Url(e.target.value)}
-            required
-          />
-            <input className='fullInputWidth'
-            type="text"
-            placeholder='Image URL'
-            value={image5Url}
-            onChange={(e) => setImage5Url(e.target.value)}
-            required
-          />
-        </label>
-        {errors.previewUrl && <p>{errors.previewUrl}</p>}
-        <button type="submit" onClick={handleSubmit}>Create Spot</button>
+        <button type="submit" onClick={{handleSubmit}}>Update Spot</button>
       </form>
     </div>
     </>
   );
 }
 
-export default CreateSpotFormModal;
+export default EditSpotFormModal;

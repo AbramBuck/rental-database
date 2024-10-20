@@ -1,0 +1,28 @@
+.reviewWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewEntryArea {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 5px;
+    width: 1000px;
+    padding: 25px 0px 15px 75px;
+
+  }
+
+  .reviewHeaderText {
+    font-family: "Rakkas", serif;
+    font-weight: 400;
+    font-size: 25px;
+    font-style: normal;
+}
+
+  .text {
+    font-family: "Arsenal SC", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 20px;
+  }

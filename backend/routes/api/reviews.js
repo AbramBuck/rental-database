@@ -24,7 +24,7 @@ async function getPreviewImage(spotId){
 
 //Get all Reviews of the Current User
 router.get('/current',requireAuth, async (req, res) => {
-    console.log(req.user.dataValues.id);
+    //console.log(req.user.dataValues.id);
     
     const loggedInUserId = req.user.dataValues.id;
     try {
@@ -285,7 +285,7 @@ router.get('/current',requireAuth, async (req, res) => {
 
       if (loggedInUserId === reviewExists.userId) {
         const newReviewImage = await ReviewImage.create({ reviewId, url});
-        console.log(newReviewImage);
+        //console.log(newReviewImage);
   
         createdImage = await ReviewImage.findOne({ 
           attributes: ['id','url'],

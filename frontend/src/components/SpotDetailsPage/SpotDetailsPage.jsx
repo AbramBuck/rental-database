@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSpotDetails } from '../../store/spotActions';
+import ReviewList from '../ReviewList/ReviewList';
 import { FaStar } from "react-icons/fa6";
 import { RxDotFilled } from "react-icons/rx";
 import image1 from '../../images/defaultImage-01.jpg';
@@ -13,11 +14,12 @@ import '../SpotDetailsPage/SpotStylesPage.css';
 // some info on the spot object {id, ownerId, price, name, description, lat, lng address, city, state, }
 
 function SpotDetailsPage() {
+    const sessionUser = useSelector(state => state.session.user);
     const { spotId } = useParams();
     const dispatch = useDispatch();
     const spot = useSelector((state) => state.spots.spotDetails);
     let reviewCoutner;
-
+    let noReveiwMessage = <h1>Be the first to post a review!</h1>;
     useEffect(() => {
         const loadSpotDetails = async () => {
             await dispatch(fetchSpotDetails(spotId));
@@ -96,13 +98,17 @@ function SpotDetailsPage() {
             </div>
             <div className='reviewArea'>
                 <div className='reviewHeader'>
-                <div className='star'><FaStar /> {spot.avgStarRating == 0 ? "New" : spot.avgStarRating.toFixed(1)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div><h2>{reviewCoutner}</h2></div>
+                    <div className='reviewHeaderInfo'>
+                        <div className='star'><FaStar /> {spot.avgStarRating == 0 ? "New" : Number(spot.avgStarRating)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div><h2>{reviewCoutner}</h2></div>
+                    </div>
+                    
+                    <div className={sessionUser ? 'buttonDiv' : ''}>
+                    {sessionUser ? <button onClick={alertMsg}>Add A Review</button> : ""}
+                    </div>
                 </div>
                 <div className='divider'></div>
                 <div className='reviewEntryArea'>
-                    <div>Reviewer First Name</div>
-                    <div>Date of Review</div>
-                    <div>Review Details Text will be in paragraph format</div>
+                    {spot.numReviews == 0 && sessionUser.id != spot.ownerId ? noReveiwMessage : <ReviewList  spotInfo={spot}/>}                       
                 </div>
             </div>
             <div className='bgGraphicDetailsPage'></div>
