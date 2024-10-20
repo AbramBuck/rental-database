@@ -9,12 +9,16 @@ import image1 from '../../images/defaultImage-01.jpg';
 import image2 from '../../images/defaultImage-02.jpg';
 import image3 from '../../images/defaultImage-03.jpg';
 import image4 from '../../images/defaultImage-04.jpg';
+import OpenModalButton from '../OpenModalButton/OpenModalButton';
+import CreateReviewModal from '../CreateReviewModal/CreateReviewModal';
 import '../SpotDetailsPage/SpotStylesPage.css';
 
 // some info on the spot object {id, ownerId, price, name, description, lat, lng address, city, state, }
 
 function SpotDetailsPage() {
     const sessionUser = useSelector(state => state.session.user);
+
+    console.log('==============',sessionUser,'======================')
     const { spotId } = useParams();
     const dispatch = useDispatch();
     const spot = useSelector((state) => state.spots.spotDetails);
@@ -102,13 +106,15 @@ function SpotDetailsPage() {
                         <div className='star'><FaStar /> {spot.avgStarRating == 0 ? "New" : Number(spot.avgStarRating)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div><h2>{reviewCoutner}</h2></div>
                     </div>
                     
-                    <div className={sessionUser ? 'buttonDiv' : ''}>
-                    {sessionUser ? <button onClick={alertMsg}>Add A Review</button> : ""}
+                    <div className={sessionUser ? 'buttonDiv' : 'gone'}>
+                    { sessionUser?.id != spot.ownerId ? 
+                    <OpenModalButton buttonText="Add A Review"  modalComponent={<CreateReviewModal spot={spot}/>}/> 
+                    : ""}
                     </div>
                 </div>
                 <div className='divider'></div>
                 <div className='reviewEntryArea'>
-                    {spot.numReviews == 0 && sessionUser.id != spot.ownerId ? noReveiwMessage : <ReviewList  spotInfo={spot}/>}                       
+                    {spot.numReviews == 0 && sessionUser?.id != spot.ownerId ? noReveiwMessage : <ReviewList  spotInfo={spot}/>}                       
                 </div>
             </div>
             <div className='bgGraphicDetailsPage'></div>

@@ -62,8 +62,6 @@ function EditSpotFormModal({ spot }) {
     }
   };
 
-  // Add the rest of your modal code, including input fields and image management
-
   return (
     <>
     <div className='modal-container'>

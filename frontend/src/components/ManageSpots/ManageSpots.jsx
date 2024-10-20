@@ -25,7 +25,7 @@ function ManageSpots() {
             </div>
             <div> 
                 <div className='userSpotsArea'>
-                    {!spots.length ? <div><h1>Loading...</h1></div> : ""}
+                    {!spots.length ? <div><h1>You Don&apos;t Have Any Spots.</h1></div> : ""}
                     {/* generate a div for each spot */}
                     {spots.map((spot) => (
                         <div key={spot.id} className='imageDiv'>

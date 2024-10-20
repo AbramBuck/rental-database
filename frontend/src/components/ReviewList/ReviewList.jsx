@@ -9,7 +9,6 @@ function ReviewList({spotInfo}) {
     const dispatch = useDispatch();
     const reviews = useSelector((state) => state.reviews.reviews);
 
-    console.log('RIGIT HERE =====================', spotId);
     //Data Shape Map
     //review.Reviews [{ id, userId, spotId, review(this is the paragraph), stars, createdAt, updatedAt }] 
     // Review Images Array: review.ReviewImages [{ id: 1, url: info}, { id: 2, url: info}, { id: 3, url: info}]

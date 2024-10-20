@@ -21,8 +21,6 @@ const dispatch = useDispatch();
   };
 
 
-  // Add the rest of your modal code, including input fields and image management
-
   return (
     
     <div className='shiny-metal-bg'>
