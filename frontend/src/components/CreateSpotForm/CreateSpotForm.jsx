@@ -56,7 +56,7 @@ function CreateSpotFormModal() {
           await dispatch(spotActions.addImageToSpot(createdSpot.id, imageUrl, false));
         }
   
-        window.location.reload();
+        window.location.href = `/spots/${createdSpot.id}`;
       } else {
         console.error("Failed to create spot, ID is undefined");
       }

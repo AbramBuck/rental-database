@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaStar } from "react-icons/fa";
 import '../ManageSpots/ManageSpots.css';
-import { fetchUserSpots, deleteASpot } from '../../store/spotActions';
+import { fetchUserSpots } from '../../store/spotActions';
 import OpenModalButton from '../OpenModalButton/OpenModalButton.jsx';
 import EditSpotFormModal from '../EditSpotFormModal/EditSpotFormModal.jsx';
+import DeleteConfirmModal from '../DeleteConfirmModal/DeleteConfirmModal.jsx';
 
 function ManageSpots() {
     const sessionUser = useSelector(state => state.session.user);
@@ -16,12 +17,6 @@ function ManageSpots() {
     useEffect(() => { 
         dispatch(fetchUserSpots());
     }, [dispatch]);
-
-    //deleteTheSpot
-    const handleDelete = (spot) => {
-        dispatch(deleteASpot(spot.id));
-        
-    };
      
     return (
         <div className='pageWrapper'>
@@ -58,7 +53,7 @@ function ManageSpots() {
                                     <div>
                                         <OpenModalButton buttonText="Update"  modalComponent={<EditSpotFormModal spot={spot} image={spot.previewImage} />}/>
                                     </div>
-                                    <button type='button' onClick={() => handleDelete(spot)}>Delete</button>
+                                    <OpenModalButton buttonText="Delete"  modalComponent={<DeleteConfirmModal spot={spot}/>}/>
                                 </div>
                             </div>
                         </div>
