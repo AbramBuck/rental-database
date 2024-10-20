@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSpotDetails } from '../../store/spotActions';
@@ -12,18 +12,20 @@ import image4 from '../../images/defaultImage-04.jpg';
 import OpenModalButton from '../OpenModalButton/OpenModalButton';
 import CreateReviewModal from '../CreateReviewModal/CreateReviewModal';
 import '../SpotDetailsPage/SpotStylesPage.css';
+import { fetchUserReviews } from '../../store/reviewActions';
 
 // some info on the spot object {id, ownerId, price, name, description, lat, lng address, city, state, }
 
 function SpotDetailsPage() {
+    const userSpotReviews = useSelector((state) => state.reviews.userSpotReviews);
     const sessionUser = useSelector(state => state.session.user);
-
-    console.log('==============',sessionUser,'======================')
     const { spotId } = useParams();
     const dispatch = useDispatch();
     const spot = useSelector((state) => state.spots.spotDetails);
     let reviewCoutner;
     let noReveiwMessage = <h1>Be the first to post a review!</h1>;
+
+    console.log('UserSpotReviews:', userSpotReviews, '=======================')
     useEffect(() => {
         const loadSpotDetails = async () => {
             await dispatch(fetchSpotDetails(spotId));
@@ -31,11 +33,24 @@ function SpotDetailsPage() {
         loadSpotDetails();
     }, [dispatch, spotId]);
 
+    useEffect(() => {
+        const userReviews = async () => {
+           await dispatch(fetchUserReviews());
+        };
+        userReviews();
+      }, [dispatch]); 
+    
     if (!spot) return <div>
         <h1>
         Loading...
         </h1>
         </div>
+
+    //Check if user has a review on this spot
+    const hasReviewedCurrentSpot = userSpotReviews.some(review => review.spotId === parseInt(spotId));
+
+
+    // userSpotReviews {id, userId, spotId, review}
     //SpotImages is an array holding all images on the spot. { id : the id of the image, url, preview : boolean for if the image is the preview image}
     const previewImage = spot.SpotImages?.find((image) => image.preview)?.url || spot.SpotImages[0].url;
     const alertMsg = () => {
@@ -106,9 +121,9 @@ function SpotDetailsPage() {
                         <div className='star'><FaStar /> {spot.avgStarRating == 0 ? "New" : Number(spot.avgStarRating)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div><h2>{reviewCoutner}</h2></div>
                     </div>
                     
-                    <div className={sessionUser ? 'buttonDiv' : 'gone'}>
+                    <div className={sessionUser && !hasReviewedCurrentSpot ? 'buttonDiv' : 'gone'}>
                     { sessionUser?.id != spot.ownerId ? 
-                    <OpenModalButton buttonText="Add A Review"  modalComponent={<CreateReviewModal spot={spot}/>}/> 
+                    <OpenModalButton buttonText="Add A Review"  modalComponent={() => <CreateReviewModal spot={spot} />}/> 
                     : ""}
                     </div>
                 </div>

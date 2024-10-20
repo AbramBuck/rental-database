@@ -22,6 +22,7 @@ function ReviewList({spotInfo}) {
         return <div><h1>Loading...</h1></div>
     }
 
+    
     return (
         <div className="reviewWrapper">
             {reviews.Reviews?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sorting reviews by date, newest to oldest

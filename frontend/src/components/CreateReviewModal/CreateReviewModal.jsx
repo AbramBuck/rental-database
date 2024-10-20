@@ -1,12 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { useState } from 'react';
+import { addReview } from '../../store/reviewActions';
 import { FaStar, FaRegStar } from "react-icons/fa";
-import '../../components/CreateReviewModal/CreateReviewModal.css';
 import '../../components/CreateReviewModal/CreateReviewModal.css';
 
 function CreateReviewModal({ spot }) {
-
   const [review, setReview] = useState("");
   const [starRating, setStarRating] = useState(0);
   const [hover, setHover] = useState(0);
@@ -18,12 +17,13 @@ function CreateReviewModal({ spot }) {
     e.preventDefault();  
 
     const reviewData = {
-      review,
-      starRating
+        spotId: spot.id,
+        review,
+        starRating
     };
 
     try {
-      // dispatch(createReview(reviewData)); Create the review here
+      dispatch(addReview(reviewData.spotId, reviewData.review, reviewData.starRating));
       closeModal();
       window.location.reload();
     } catch (error) {
@@ -44,7 +44,7 @@ function CreateReviewModal({ spot }) {
           required
         />
         <div className="starsRating">
-          {[...Array(5)].map((starRating, num) => {
+          {[...Array(5)].map((star, num) => {
             num += 1;
             return (
               <span 
@@ -54,7 +54,7 @@ function CreateReviewModal({ spot }) {
                 onMouseEnter={() => setHover(num)}
                 onMouseLeave={() => setHover(0)}
               >
-                {num <= (hover || starRating) ? <FaStar className='stars' /> : <FaRegStar className='stars'/>}
+                {num <= (hover > 0 ? hover : starRating) ? <FaStar className='stars' /> : <FaRegStar className='stars'/>}
               </span>
             );
           })}
