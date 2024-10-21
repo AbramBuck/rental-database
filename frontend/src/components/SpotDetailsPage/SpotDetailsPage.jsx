@@ -25,7 +25,7 @@ function SpotDetailsPage() {
     let reviewCoutner;
     let noReveiwMessage = <h1>Be the first to post a review!</h1>;
 
-    console.log('UserSpotReviews:', userSpotReviews, '=======================')
+    //console.log('UserSpotReviews:', userSpotReviews, '=======================')
     useEffect(() => {
         const loadSpotDetails = async () => {
             await dispatch(fetchSpotDetails(spotId));

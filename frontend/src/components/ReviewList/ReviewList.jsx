@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchReviews } from "../../store/reviewActions.js";
 import '../ReviewList/ReviewList.css';
+import DeleteReviewModal from "../DeleteReviewModal/DeleteReviewModal.jsx";
+import OpenModalButton from "../OpenModalButton/OpenModalButton.jsx";
 
 
 function ReviewList({spotInfo}) {
@@ -42,6 +44,7 @@ function ReviewList({spotInfo}) {
                             <div className="reviewHeaderText">{review.User.firstName}</div>
                             <div className="text">{formattedDate}</div> {/* Display formatted date */}
                             <div className="text">{review.review}</div>
+                            <OpenModalButton buttonText="Delete Your Review"  modalComponent={() => <DeleteReviewModal reviewId={review.id} />}/>
                         </div>
                     );
                 })

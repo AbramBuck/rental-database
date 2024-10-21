@@ -27,8 +27,8 @@ const dispatch = useDispatch();
       <h1 className='titleText'>Confirm Delete</h1>
       <h2 className='subhead'>Are you sure you want to remove this spot from the listings?</h2>
       <div className='buttonDiv'>
-        <button type="submit" onClick={() => closeModal()}>Close</button>
-        <button type='button' onClick={() => handleDelete(spot)}>Delete Spot</button>
+        <button className='closeBtn' type="submit" onClick={() => closeModal()}>{"No (Keep Spot)"}</button>
+        <button type='button' onClick={() => handleDelete(spot)}>{"Yes (Delete Spot)"}</button>
       </div>
     </div>
     
