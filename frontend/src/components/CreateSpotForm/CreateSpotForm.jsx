@@ -4,7 +4,7 @@ import { useModal } from '../../context/Modal';
 //import * as sessionActions from '../../store/session';
 import * as spotActions from '../../store/spotActions';
 import '../../components/CreateSpotForm/CreateSpotForm.css';
-
+import { createSpot } from '../../store/spotActions';
 
 function CreateSpotFormModal() {
   const dispatch = useDispatch();
@@ -12,8 +12,8 @@ function CreateSpotFormModal() {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [lat, setLatitude] = useState("");
-  const [lng, setLongitude] = useState("");
+  const [lat, setLatitude] = useState(90);
+  const [lng, setLongitude] = useState(180);
   const [description, setDescription] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -23,29 +23,28 @@ function CreateSpotFormModal() {
   const [image4Url, setImage4Url] = useState("");
   const [image5Url, setImage5Url] = useState("");
   const [errors, setErrors] = useState({});
-  const { closeModal } = useModal();
 
+  const { closeModal } = useModal();
+  let createdSpot = null;
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const spotData = {
-      country,
-      address,
-      city,
-      state,
-      description,
-      name,
-      price,
-      lat,
-      lng,
-      previewUrl,
-    };
-  
+
+    const addedSpot = { country, address, city, state, description, name, price, lat, lng };
+
     try {
-      const createdSpot = await dispatch(spotActions.createSpot(spotData));
-      console.log("Created spot:", createdSpot);
-  
-      closeModal();
+        createdSpot = await dispatch(createSpot(addedSpot));
+        console.log('Spot created:', createdSpot);
+        // Handle success
+    } catch (error) {
+        const errorData = await error.json();
+        if (errorData?.errors) {
+            setErrors(errorData.errors);
+        } else {
+            console.error('Error creating spot:', error);
+        }
+    }
+
+    try {
 
       if (createdSpot.id) {
         await dispatch(spotActions.addImageToSpot(createdSpot.id, previewUrl, true));
@@ -55,7 +54,7 @@ function CreateSpotFormModal() {
         for (const imageUrl of additionalImages) {
           await dispatch(spotActions.addImageToSpot(createdSpot.id, imageUrl, false));
         }
-  
+        closeModal();
         window.location.href = `/spots/${createdSpot.id}`;
       } else {
         console.error("Failed to create spot, ID is undefined");
@@ -63,10 +62,13 @@ function CreateSpotFormModal() {
   
     } catch (error) {
       console.error("Error submitting the form:", error);
-      if (error.response && error.response.data.errors) {
-        setErrors(error.response.data.errors);
+      if (error.response && error.response.data && error.response.data.errors) {
+        const errors = error.response.data.errors;
+        
+
+        setErrors(errors);
       } else {
-        setErrors({ general: "An unexpected error occurred." });
+        console.log("Unexpected error", error);
       }
     }
   };
@@ -87,7 +89,7 @@ function CreateSpotFormModal() {
             required
           />
         </label>
-        {errors.country && <p>{errors.country}</p>}
+        {errors.country && <p className="error-message">{errors.country}</p>}
         <label className='label'>
           Address
           <input className='fullInputWidth'
@@ -97,7 +99,7 @@ function CreateSpotFormModal() {
             required
           />
         </label>
-        {errors.address && <p>{errors.address}</p>}
+        {errors.address && <p className="error-message">{errors.address}</p>}
        <div className='cityAndStateDiv'>
             <div className='cityDiv'>
                 <label className='label'>
@@ -110,7 +112,7 @@ function CreateSpotFormModal() {
                     required
                 />
             </div>
-            {errors.city && <p>{errors.city}</p>}
+            {errors.city && <p className="error-message">{errors.city}</p>}
             <div className='stateDiv'>
                 <label className='label'>
                 State
@@ -122,7 +124,7 @@ function CreateSpotFormModal() {
                     required
                 />
             </div>
-            {errors.state && <p>{errors.state}</p>}
+            {errors.state && <p className="error-message">{errors.state}</p>}
         </div>
         <div className='latAndLngDiv'>
             <div className='latitudeDiv'>
@@ -157,7 +159,7 @@ function CreateSpotFormModal() {
             required
           />
         </label>
-        {errors.description && <p>{errors.description}</p>}
+        {errors.description && <p className="error-message">{errors.description}</p>}
         <h2 className='subhead'>Create a title for your spot</h2>
         <caption className='caption'>Catch guests&apos; attention with a spot title that highlights what makes your place special.</caption>
         <label className='label'>
@@ -169,7 +171,7 @@ function CreateSpotFormModal() {
             required
           />
         </label>
-        {errors.name && <p>{errors.name}</p>}
+        {errors.name && <p className="error-message">{errors.name}</p>}
         <h2 className='subhead'>Set a base price for your spot</h2>
         <caption className='caption'>Competitive pricing can help your listing stand out and rank higher in search results.</caption>
         <label className='label'>
@@ -181,7 +183,7 @@ function CreateSpotFormModal() {
             required
           />
         </label>
-        {errors.price && <p>{errors.price}</p>}
+        {errors.price && <p className="error-message">{errors.price}</p>}
         <h2 className='subhead'>Liven up your spot with photos</h2>
         <caption className='caption'>Submit a link to at least one photo to publish your spot.</caption>
         <label className='label'>

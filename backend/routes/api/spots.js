@@ -307,6 +307,7 @@ router.post('/', requireAuth, async (req, res) => {
 
    
     if (Object.keys(errors).length > 0) {
+      //console.log('Server ======== Validation Errors:', errors);
       return res.status(400).json({
         message: "Bad Request",
         errors,
