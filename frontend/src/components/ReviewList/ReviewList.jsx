@@ -10,7 +10,7 @@ function ReviewList({spotInfo}) {
     const spotId = spotInfo.id;
     const dispatch = useDispatch();
     const reviews = useSelector((state) => state.reviews.reviews);
-
+    const sessionUser = useSelector(state => state.session.user);
     //Data Shape Map
     //review.Reviews [{ id, userId, spotId, review(this is the paragraph), stars, createdAt, updatedAt }] 
     // Review Images Array: review.ReviewImages [{ id: 1, url: info}, { id: 2, url: info}, { id: 3, url: info}]
@@ -44,7 +44,7 @@ function ReviewList({spotInfo}) {
                             <div className="reviewHeaderText">{review.User.firstName}</div>
                             <div className="text">{formattedDate}</div> {/* Display formatted date */}
                             <div className="text">{review.review}</div>
-                            <OpenModalButton buttonText="Delete Your Review"  modalComponent={() => <DeleteReviewModal reviewId={review.id} />}/>
+                            {sessionUser.id !== review.User.id ? ' ' : <OpenModalButton buttonText="Delete Your Review"  modalComponent={() => <DeleteReviewModal reviewId={review.id} />}/>}
                         </div>
                     );
                 })
