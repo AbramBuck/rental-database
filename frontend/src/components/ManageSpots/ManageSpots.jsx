@@ -7,6 +7,7 @@ import { fetchUserSpots } from '../../store/spotActions';
 import OpenModalButton from '../OpenModalButton/OpenModalButton.jsx';
 import EditSpotFormModal from '../EditSpotFormModal/EditSpotFormModal.jsx';
 import DeleteConfirmModal from '../DeleteConfirmModal/DeleteConfirmModal.jsx';
+import CreateSpotFormModal from '../CreateSpotForm/CreateSpotForm.jsx';
 
 function ManageSpots() {
     const sessionUser = useSelector(state => state.session.user);
@@ -18,14 +19,18 @@ function ManageSpots() {
         dispatch(fetchUserSpots());
     }, [dispatch]);
      
+    
+
     return (
         <div className='pageWrapper'>
             <div className='topTextArea'>
-                <h1 className='titleText'>Spots Owned By {sessionUser.username}</h1>
+                <h1 className='titleText'>Manage Spots Owned By {sessionUser.username}</h1>
             </div>
             <div> 
                 <div className='userSpotsArea'>
-                    {!spots.length ? <div><h1>You Don&apos;t Have Any Spots.</h1></div> : ""}
+                    {!spots.length ? <div><h1>You Don&apos;t Have Any Spots.</h1>
+                    <OpenModalButton buttonText="Create A Spot"  modalComponent={<CreateSpotFormModal />}/>
+                    </div> : ""}
                     {/* generate a div for each spot */}
                     {spots.map((spot) => (
                         <div key={spot.id} className='imageDiv'>

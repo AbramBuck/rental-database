@@ -12,7 +12,7 @@ function CreateReviewModal({ spot }) {
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-
+  let btnDisabled = true;
   const handleCreate = (e) => {
     e.preventDefault();  
 
@@ -30,6 +30,12 @@ function CreateReviewModal({ spot }) {
       setErrors({ submission: "Error when trying to create a review." });
     }
   };
+
+  if (review.length < 10 || starRating === 0) {
+    btnDisabled = true;
+  } else {
+    btnDisabled = false;
+  }
 
   return (
     <div className='shiny-metal-bg'>
@@ -62,7 +68,7 @@ function CreateReviewModal({ spot }) {
         </div>
         <div className='buttonDiv'>
           <button type="button" onClick={closeModal}>Close</button>
-          <button type='submit'>Submit Your Review</button>
+          <button className={btnDisabled === true ? 'disabled' : 'signUpButton'} disabled={btnDisabled === true ? true : false} type='submit'>Submit Your Review</button>
         </div>
       </form>
     </div>

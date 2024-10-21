@@ -118,7 +118,7 @@ function SpotDetailsPage() {
             <div className='reviewArea'>
                 <div className='reviewHeader'>
                     <div className='reviewHeaderInfo'>
-                        <div className='star'><FaStar /> {spot.avgStarRating == 0 ? "New" : Number(spot.avgStarRating)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div><h2>{reviewCoutner}</h2></div>
+                        <div className='star'><FaStar /> {spot.avgStarRating == 0 ? "New" : spot.avgStarRating.toFixed(1)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div><h2>{reviewCoutner}</h2></div>
                     </div>
                     
                     <div className={sessionUser && !hasReviewedCurrentSpot ? 'buttonDiv' : 'gone'}>

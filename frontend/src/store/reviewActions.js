@@ -52,9 +52,9 @@ export const addReview = (spotId, review, stars) => async(dispatch) => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({
+                spotId,
                 review,
                 stars,
-                spotId,
             })
         });
 
@@ -99,14 +99,16 @@ export const deleteReview = (reviewId) => async (dispatch) => {
     try {
         const response = await csrfFetch(`/api/reviews/${reviewId}`,{
             method: 'DELETE',
-            headers: { 'Content-Type': 'application/json'},
         });
+
 
         if (!response.ok) {
             throw new Error('Failed to delete review');
         }
 
-        dispatch(deleteReviewAction(reviewId));
+        if (response.ok){
+            dispatch(deleteReviewAction(reviewId));
+        }
 
     } catch (error) {
         console.error('Error deleting review', error)
@@ -134,8 +136,8 @@ const reviewReducer = (state = initialState, action) => {
         case DELETE_REVIEW:
             return {
                 ...state,
-                reviews: action.reviews,
-            }
+                reviews: state.reviews.Reviews.filter(review => review.id !== action.reviewId),
+            };
 
         default:
             return state;

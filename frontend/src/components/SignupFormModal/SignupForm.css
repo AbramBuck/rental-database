@@ -118,3 +118,66 @@
     text-align: center;
     padding-bottom: 20px;
 }
+
+.signUpButton {
+  display: flex;
+  justify-content: center;
+  border: 2px outset grey;
+  border-radius: 5px;
+  background-color: #801817;
+  color: #ffdc68;
+  font-family: roboto;
+  font-size: 18px;
+  font-weight: bold;
+  width: fit-content;
+  margin-top: 15px;
+  padding: 10px;
+}
+
+.signUpButton:hover {
+  display: flex;
+  justify-content: center;
+  border: 2px outset grey ;
+  background-color: #fa6e6b;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+  font-family: roboto;
+  font-size: 18px;
+  font-weight: bold;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.disabled {
+  display: flex;
+  justify-content: center;
+  border: 2px outset grey;
+  border-radius: 5px;
+  background-color: #848484;
+  color: #d7d7d7;
+  font-family: roboto;
+  font-size: 18px;
+  font-weight: bold;
+  width: fit-content;
+  margin-top: 15px;
+  padding: 10px;
+  opacity: 0.4;
+}
+
+.disabled:hover {
+  display: flex;
+  justify-content: center;
+  border: 2px outset grey;
+  border-radius: 5px;
+  background-color: #848484;
+  color: #d7d7d7;
+  font-family: roboto;
+  font-size: 18px;
+  font-weight: bold;
+  width: fit-content;
+  margin-top: 15px;
+  padding: 10px;
+  opacity: 0.4;
+  cursor: not-allowed;
+}

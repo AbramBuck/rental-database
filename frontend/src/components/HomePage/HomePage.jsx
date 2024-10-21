@@ -42,7 +42,7 @@ return (
                             </div>
                             <div className='priceAreaDiv'>
                                 <div className='priceDiv'><h3>${spot.price}</h3> <p>night</p></div>
-                                <div className='ratingAreaDiv'><FaStar className='star' /></div> <div className='ratingDiv'>{spot.avgRating == 0 ? <p className='rating'>New</p> : Number(spot.avgRating)}</div>
+                                <div className='ratingAreaDiv'><FaStar className='star' /></div> <div className='ratingDiv'>{spot.avgRating == 0 ? <p className='rating'>New</p> : spot.avgRating.toFixed(1)}</div>
                             </div>
                         </div>
                     </div>

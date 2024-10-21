@@ -57,7 +57,7 @@ function ProfileButton({ user }) {
       <div className='createSpotLink'> 
       {!user ? " " : <OpenModalMenuItem itemText="Create A Destination" onItemClick={closeMenu} modalComponent={<CreateSpotFormModal />}/>}
       </div> 
-      <img className='buttonIcon' src={icon} alt="Hearths & Havens" />
+     {!user ? " " : <img className='buttonIcon' src={icon} alt="Hearths & Havens" />}
       <button onClick={toggleMenu} className='profileButton'>
         {!user ? "Login or Signup" : user.username}
       </button>

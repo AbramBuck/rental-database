@@ -8,6 +8,7 @@ function LoginFormModal() {
   const dispatch = useDispatch();
   let [credential, setCredential] = useState("");
   let [password, setPassword] = useState("");
+  let btnDisabled = true;
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
@@ -39,6 +40,13 @@ function LoginFormModal() {
       });
   };
 
+
+  if (credential.length < 4 || password.length < 6 ) {
+    btnDisabled = true;
+  } else {
+    btnDisabled = false;
+  }
+
   return (
     <>
     <div className="loginmodal-container">
@@ -68,7 +76,7 @@ function LoginFormModal() {
             <p>{errors.credential}</p>
           )}
           <div className='loginButtonArea'>
-          <button type="submit">Log In</button>
+          <button className={btnDisabled === true ? 'disabled' : 'loginButton'} type="submit" disabled={btnDisabled === true ? true : false}>Log In</button>
           <button type="button" onClick={handleDemoUserSubmit}>Log In as Demo User</button>
           </div>
         </form>

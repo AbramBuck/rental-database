@@ -13,7 +13,6 @@ const dispatch = useDispatch();
     try {
       dispatch(deleteASpot(spot.id)); 
       closeModal();
-      window.location.reload();
     } catch (error) {
 
       throw new Error("Error when trying to delete a spot.");
