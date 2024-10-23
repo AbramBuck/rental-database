@@ -9,7 +9,7 @@ import image1 from '../../images/defaultImage-01.jpg';
 import image2 from '../../images/defaultImage-02.jpg';
 import image3 from '../../images/defaultImage-03.jpg';
 import image4 from '../../images/defaultImage-04.jpg';
-import previewImg from '../../images/defaultImage-00-Preview.jpg'
+import defaultPreview from '../../images/defaultImage-00-Preview.jpg'
 import OpenModalButton from '../OpenModalButton/OpenModalButton';
 import CreateReviewModal from '../CreateReviewModal/CreateReviewModal';
 import '../SpotDetailsPage/SpotStylesPage.css';
@@ -48,7 +48,7 @@ function SpotDetailsPage() {
 
     // userSpotReviews {id, userId, spotId, review}
     //SpotImages is an array holding all images on the spot. { id : the id of the image, url, preview : boolean for if the image is the preview image}
-    const previewImage = spot.SpotImages?.find((image) => image.preview)?.url || previewImg;
+    const previewImage = spot.SpotImages?.find((image) => image.preview)?.url;
     const alertMsg = () => {
         alert('Feature Coming Soon!');
     };
@@ -69,7 +69,7 @@ function SpotDetailsPage() {
                 <h3 className='text'>LOCATION: {spot.city}, {spot.state},{spot.country}</h3>
             </div>
             <div className='imageArea'>
-                <div className='heroImageArea'><img src={previewImage} alt={spot.name} className='heroImage' /></div>
+                <div className='heroImageArea'><img src={previewImage ? previewImage : defaultPreview} alt={spot.name} className='heroImage' /></div>
                 <div className='sideImagesArea'>
                     {spot.SpotImages.length > 0 && (
                         <>

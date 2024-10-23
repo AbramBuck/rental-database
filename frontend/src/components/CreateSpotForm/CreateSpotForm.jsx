@@ -5,6 +5,7 @@ import { useModal } from '../../context/Modal';
 import * as spotActions from '../../store/spotActions';
 import '../../components/CreateSpotForm/CreateSpotForm.css';
 import { createSpot } from '../../store/spotActions';
+import defaultPreview from '../../images/defaultImage-00-Preview.jpg'
 
 function CreateSpotFormModal() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function CreateSpotFormModal() {
   const [description, setDescription] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [previewUrl, setPreviewUrl] = useState("");
+  const [previewUrl, setPreviewUrl] = useState(defaultPreview);
   const [image2Url, setImage2Url] = useState("");
   const [image3Url, setImage3Url] = useState("");
   const [image4Url, setImage4Url] = useState("");
