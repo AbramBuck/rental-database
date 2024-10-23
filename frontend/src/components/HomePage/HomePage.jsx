@@ -7,6 +7,7 @@ import logo from '../../images/Hearth-Havens_TextLogo.png';
 //import '../SpotDetailsPage/SpotStylesPage.css';
 import '../HomePage/Homepage.css';
 import { FaStar } from "react-icons/fa";
+import { showStarRating } from '../../utils/SpotUtils';
 
 
 function HomePage(){
@@ -42,7 +43,7 @@ return (
                             </div>
                             <div className='priceAreaDiv'>
                                 <div className='priceDiv'><h3>${spot.price}</h3> <p>night</p></div>
-                                <div className='ratingAreaDiv'><FaStar className='star' /></div> <div className='ratingDiv'>{spot.avgRating == 0 ? <p className='rating'>New</p> : spot.avgRating.toFixed(1)}</div>
+                                <div className='ratingAreaDiv'><FaStar className='star' /></div> <div className='ratingDiv'>{showStarRating(spot)}</div>
                             </div>
                         </div>
                     </div>

@@ -13,6 +13,8 @@ import OpenModalButton from '../OpenModalButton/OpenModalButton';
 import CreateReviewModal from '../CreateReviewModal/CreateReviewModal';
 import '../SpotDetailsPage/SpotStylesPage.css';
 import { fetchUserReviews } from '../../store/reviewActions';
+import { showStarRating } from '../../utils/SpotUtils';
+
 
 // some info on the spot object {id, ownerId, price, name, description, lat, lng address, city, state, }
 
@@ -25,30 +27,23 @@ function SpotDetailsPage() {
     let reviewCoutner;
     let noReveiwMessage = <h1>Be the first to post a review!</h1>;
 
+    console.log(spot);
+   
     //console.log('UserSpotReviews:', userSpotReviews, '=======================')
     useEffect(() => {
-        const loadSpotDetails = async () => {
-            await dispatch(fetchSpotDetails(spotId));
-        };
-        loadSpotDetails();
+            dispatch(fetchSpotDetails(spotId));
     }, [dispatch, spotId]);
 
     useEffect(() => {
-        const userReviews = async () => {
-           await dispatch(fetchUserReviews());
-        };
-        userReviews();
-      }, [dispatch]); 
+        dispatch(fetchUserReviews());
+    }, [dispatch]); 
     
-    if (!spot) return <div>
-        <h1>
-        Loading...
-        </h1>
-        </div>
+    if (!spot) {
+        return <div><h1>Loading...</h1></div>;
+    }
 
     //Check if user has a review on this spot
     const hasReviewedCurrentSpot = userSpotReviews.some(review => review.spotId === parseInt(spotId));
-
 
     // userSpotReviews {id, userId, spotId, review}
     //SpotImages is an array holding all images on the spot. { id : the id of the image, url, preview : boolean for if the image is the preview image}
@@ -58,11 +53,11 @@ function SpotDetailsPage() {
     };
 
     if (spot.numReviews == 0) {
-        reviewCoutner ="";
+        reviewCoutner = "";
      }else if (spot.numReviews == 1) {
-        reviewCoutner= `${spot.numReviews} Review`;
+        reviewCoutner = `${spot.numReviews} Review`;
     } else {
-        reviewCoutner=`${spot.numReviews} Reviews`;
+        reviewCoutner =`${spot.numReviews} Reviews`;
     }
 
     return (
@@ -108,7 +103,7 @@ function SpotDetailsPage() {
                 </div>
                 <div className='reserveArea'>
                     <div className='priceReviewArea'>
-                           <div className='spotPrice'>{spot.price} night</div> <div className='arsenal-sc-bold-25px star'><FaStar /> {spot.avgStarRating == 0 ? "New" : spot.avgStarRating.toFixed(1)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div className='arsenal-sc-bold-25px star'>{reviewCoutner}</div>
+                           <div className='spotPrice'>{spot.price} night</div> <div className='arsenal-sc-bold-25px star'><FaStar /> {showStarRating(spot)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div className='arsenal-sc-bold-25px star'>{reviewCoutner}</div>
                     </div>
                     <div className='buttonDiv'>
                         <button onClick={alertMsg}>Reserve</button>
@@ -118,7 +113,7 @@ function SpotDetailsPage() {
             <div className='reviewArea'>
                 <div className='reviewHeader'>
                     <div className='reviewHeaderInfo'>
-                        <div className='star'><FaStar /> {spot.avgStarRating == 0 ? "New" : spot.avgStarRating.toFixed(1)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div><h2>{reviewCoutner}</h2></div>
+                        <div className='star'><FaStar /> {showStarRating(spot)}</div><div className='dot'>{spot.numReviews == 0 ? "" : <RxDotFilled />}</div><div><h2>{reviewCoutner}</h2></div>
                     </div>
                     
                     <div className={sessionUser && !hasReviewedCurrentSpot ? 'buttonDiv' : 'gone'}>

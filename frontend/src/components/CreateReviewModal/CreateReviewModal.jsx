@@ -25,7 +25,7 @@ function CreateReviewModal({ spot }) {
     try {
       dispatch(addReview(reviewData.spotId, reviewData.review, reviewData.starRating));
       closeModal();
-      window.location.reload();
+      //window.location.reload();
     } catch (error) {
       setErrors({ submission: "Error when trying to create a review." });
     }

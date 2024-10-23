@@ -1,4 +1,7 @@
 import { csrfFetch } from "./csrf";
+import { fetchSpotDetails } from "./spotActions";
+
+export const selectReviews = (state) => state.reviews.reviews;
 
 // Reducer Initial State
 const initialState = {
@@ -39,7 +42,7 @@ export const fetchReviews = (spotId) => async (dispatch) => {
     try {
         const response = await csrfFetch(`/api/spots/${spotId}/reviews`);
         const data = await response.json();
-        dispatch(getReviews(data));
+        dispatch(getReviews(data.Reviews));
     } catch (error) {
         console.error('Error fetching reviews:', error);
     }
@@ -59,7 +62,14 @@ export const addReview = (spotId, review, stars) => async(dispatch) => {
         });
 
         const data = await response.json();
-        dispatch(postReview(data));
+        if (response.ok) {
+            dispatch(postReview(data));
+            dispatch(fetchUserReviews());
+            dispatch(fetchSpotDetails(spotId));
+
+        }
+
+        
 
     } catch (error) {
         console.error('Error creating review', error)
@@ -84,7 +94,8 @@ export const fetchUserReviews = () => async (dispatch) => {
 
         const data = await response.json();
 
-        dispatch(userReview(data.Reviews));
+        dispatch(userReview(data.Reviews)); 
+        
 
         return data.Reviews;
 
@@ -94,7 +105,7 @@ export const fetchUserReviews = () => async (dispatch) => {
 };
 
 //THUNK - DELETE REVIEW
-export const deleteReview = (reviewId) => async (dispatch) => {
+export const deleteReview = (reviewId, spotId) => async (dispatch) => {
 
     try {
         const response = await csrfFetch(`/api/reviews/${reviewId}`,{
@@ -107,7 +118,9 @@ export const deleteReview = (reviewId) => async (dispatch) => {
         }
 
         if (response.ok){
+            dispatch(fetchSpotDetails(spotId));
             dispatch(deleteReviewAction(reviewId));
+            dispatch(fetchUserReviews());
         }
 
     } catch (error) {
@@ -136,7 +149,7 @@ const reviewReducer = (state = initialState, action) => {
         case DELETE_REVIEW:
             return {
                 ...state,
-                reviews: state.reviews.Reviews.filter(review => review.id !== action.reviewId),
+                reviews: state.reviews.filter(review => review.id !== action.reviewId),
             };
 
         default:

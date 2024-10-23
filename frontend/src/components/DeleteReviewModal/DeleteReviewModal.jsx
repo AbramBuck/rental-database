@@ -1,20 +1,20 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
-import {deleteReview}from '../../store/reviewActions';
+import {deleteReview, selectReviews}from '../../store/reviewActions';
 import '../../components/DeleteConfirmModal/DeleteConfirmModal.css';
 
-function DeleteReviewModal({ reviewId }) {
-const dispatch = useDispatch();
+function DeleteReviewModal({ reviewId, spotId }) {
+  const dispatch = useDispatch();
   const { closeModal } = useModal();
-  const reviews = useSelector((state) => state.reviews.reviews);
+  const reviews = useSelector(selectReviews);
   
   
   const handleDelete = (reviewId) => {    
-      dispatch(deleteReview(reviewId)); 
+      dispatch(deleteReview(reviewId, spotId)); 
       closeModal();
-      reviews.Reviews.filter(review => review.id !== reviewId);
-      window.location.reload();
+      reviews.filter(review => review.id !== reviewId);
+      //window.location.reload();
   };
 
   return (
