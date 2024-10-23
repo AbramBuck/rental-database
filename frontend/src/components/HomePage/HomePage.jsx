@@ -8,6 +8,7 @@ import logo from '../../images/Hearth-Havens_TextLogo.png';
 import '../HomePage/Homepage.css';
 import { FaStar } from "react-icons/fa";
 import { showStarRating } from '../../utils/SpotUtils';
+import previewImg from '../../images/defaultImage-00-Preview.jpg'
 
 
 function HomePage(){
@@ -34,7 +35,7 @@ return (
                 {spots.map((spot) =>(
                     <div key={spot.id}>
                         <Link to={`/spots/${spot.id}`}>
-                        <img src={spot.previewImage} title={spot.name} alt={spot.name} className="allSpotImg"/>
+                        <img src={spot.previewImage || previewImg} title={spot.name} alt={spot.name} className="allSpotImg"/>
                         </Link>
                         <div className='spotInfoDiv'>
                             <div className='cityStateStarDiv'>
