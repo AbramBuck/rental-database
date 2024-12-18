@@ -25,14 +25,17 @@ import defaultPreview from '../../images/defaultImage-00-Preview.jpg'
 function HomePage(){
 const dispatch = useDispatch();
 const spots = useSelector((state) => state.spots.spots);
+const sessionUser = useSelector(state => state.session.user);
 
-// this actually executes the fetchSpots action
 useEffect(() => { 
 dispatch(fetchSpots());
 }, [dispatch]);
 
 let marketingText = "Immerse yourself in the breathtaking realms of Azeroth, where comfort meets adventure at every turn. Your perfect retreat awaits, tailored to offer both relaxation and discovery in the heart of this legendary world.";
 
+function alertMsg() {
+    alert("Login to view spots")
+}
 //for each spot i can access id, name, price, city, state, description, avgRating
 
 return (
@@ -45,8 +48,8 @@ return (
                 {/* generate a div for each spot */}
                 {spots.map((spot) =>(
                     <div key={spot.id}>
-                        <Link to={`/spots/${spot.id}`}>
-                        <img src={spot.previewImage ? spot.previewImage : defaultPreview} title={spot.name} alt={spot.name} className="allSpotImg"/>
+                        <Link to={sessionUser ? `/spots/${spot.id}` : ""}>
+                        <img src={spot.previewImage ? spot.previewImage : defaultPreview} title={spot.name} alt={spot.name} className="allSpotImg" onClick={!sessionUser ? ()=> alertMsg() : null}/>
                         </Link>
                         <div className='spotInfoDiv'>
                             <div className='cityStateStarDiv'>

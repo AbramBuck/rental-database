@@ -118,7 +118,7 @@ function SpotDetailsPage() {
                     </div>
                     
                     <div className={sessionUser && !hasReviewedCurrentSpot ? 'buttonDiv' : 'gone'}>
-                    { sessionUser?.id != spot.ownerId ? 
+                    {sessionUser !== null && sessionUser?.id != spot.ownerId ? 
                     <OpenModalButton buttonText="Add A Review"  modalComponent={() => <CreateReviewModal spot={spot} />}/> 
                     : ""}
                     </div>
